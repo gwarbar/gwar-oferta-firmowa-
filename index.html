@@ -348,22 +348,25 @@ html.wash .marquee, html.wash .space, html.wash .quote, html.wash .contact { bac
 
 /* Space */
 .space { background: var(--surface); }
-.space__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.space__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
 .space h2 { color: var(--cream); }
 .specs { margin: 2rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .specs div { background: var(--surface); padding: 1.2rem; min-width: 0; }
 .specs dt { color: var(--muted); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
 .specs dd { margin: .3rem 0 0; font-family: var(--font-display); text-transform: uppercase; font-size: 1.7rem; line-height: 1; color: var(--text); font-variant-numeric: tabular-nums; }
 .specs dd small { display: block; font-family: var(--font-body); text-transform: none; font-size: .82rem; color: var(--muted); margin-top: .35rem; line-height: 1.3; }
-.gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: clamp(90px, 11vw, 150px); gap: .8rem; }
-.gallery figure { margin: 0; overflow: hidden; border-radius: var(--radius); }
+/* Three different views of the room, as tall as the text column next to them */
+.gallery {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: .8rem; height: clamp(520px, 72svh, 680px);
+}
+.gallery figure { margin: 0; overflow: hidden; border-radius: var(--radius); min-height: 0; }
 .gallery img { width: 100%; height: 118%; object-fit: cover; }
-.g1 { grid-column: 1 / 4; grid-row: span 4; border-radius: 999px 999px var(--radius) var(--radius) !important; }
-.g2 { grid-column: 4 / 7; grid-row: span 2; }
-.g3 { grid-column: 4 / 7; grid-row: span 2; }
-.g4 { grid-column: 1 / 3; grid-row: span 3; }
-.g5 { grid-column: 3 / 7; grid-row: span 3; }
-@media (max-width: 860px) { .space__grid { grid-template-columns: 1fr; } }
+.g1 { grid-row: 1 / 3; border-radius: 999px 999px var(--radius) var(--radius) !important; }
+@media (max-width: 860px) {
+  .space__grid { grid-template-columns: 1fr; }
+  .gallery { height: auto; aspect-ratio: 1 / 1.15; }
+}
 
 /* Steps */
 .steps__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; counter-reset: step; margin-top: 3rem; }
@@ -707,11 +710,9 @@ textarea { min-height: 7rem; resize: vertical; }
         <p style="color: var(--muted); font-size: .9rem; margin-top: 1.2rem">Wi-Fi za darmo, psy mile widziane, płatność kartą i telefonem. Przy wejściu jest próg, toaleta jest w lokalu.</p>
       </div>
       <div class="gallery js-gallery">
-        <figure class="g1"><img src="media/room-brick-800.webp" srcset="media/room-brick-800.webp 800w, media/room-brick-1600.webp 1600w" sizes="(max-width: 860px) 50vw, 30vw" alt="Ceglana ściana z okrągłym lustrem i stolikami" loading="lazy" width="800" height="1200"></figure>
-        <figure class="g2"><img src="media/room-lamp-800.webp" srcset="media/room-lamp-800.webp 800w, media/room-lamp-1600.webp 1600w" sizes="(max-width: 860px) 50vw, 30vw" alt="Stoliki przy zielonej boazerii i różowa lampka" loading="lazy" width="800" height="1200"></figure>
-        <figure class="g3"><img src="media/table-berries-800.webp" srcset="media/table-berries-800.webp 800w, media/table-berries-1600.webp 1600w" sizes="(max-width: 860px) 50vw, 30vw" alt="Stolik z czerwonymi gałązkami w butelce" loading="lazy" width="800" height="1200"></figure>
-        <figure class="g4"><img src="media/room-sofa-800.webp" srcset="media/room-sofa-800.webp 800w, media/room-sofa-1600.webp 1600w" sizes="(max-width: 860px) 35vw, 20vw" alt="Kanapa i stolik przy półce z roślinami" loading="lazy" width="800" height="1200"></figure>
-        <figure class="g5"><img src="media/room-long-800.webp" srcset="media/room-long-800.webp 800w, media/room-long-1600.webp 1600w" sizes="(max-width: 860px) 65vw, 40vw" alt="Widok na całą salę z wejściem w głębi" loading="lazy" width="800" height="1200"></figure>
+        <figure class="g1"><img src="media/room-long-800.webp" srcset="media/room-long-800.webp 800w, media/room-long-1600.webp 1600w" sizes="(max-width: 860px) 55vw, 30vw" alt="Widok na całą salę: stoliki przy zielonej boazerii i wejście w głębi" loading="lazy" width="800" height="1200"></figure>
+        <figure class="g2"><img src="media/room-sofa-800.webp" srcset="media/room-sofa-800.webp 800w, media/room-sofa-1600.webp 1600w" sizes="(max-width: 860px) 45vw, 25vw" alt="Kanapa i stolik pod półką z roślinami" loading="lazy" width="800" height="1200"></figure>
+        <figure class="g3"><img src="media/table-berries-800.webp" srcset="media/table-berries-800.webp 800w, media/table-berries-1600.webp 1600w" sizes="(max-width: 860px) 45vw, 25vw" alt="Stolik z czerwonymi gałązkami w butelce i kartą grzańców" loading="lazy" width="800" height="1200"></figure>
       </div>
     </div>
   </section>
