@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gwar dla firm</title>
+<meta name="description" content="Wigilie firmowe, integracje i wieczory na wyłączność w Bar Gwar na Kazimierzu, Mostowa 8. Sala do 50 osób, koktajle robione na miejscu.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Gwar dla firm – wigilie, integracje, wynajem na wyłączność">
+<meta property="og:description" content="Bar na Kazimierzu przy Kładce Bernatka. Sala do 50 osób, koktajle robione na miejscu, 4,9 w Google.">
+<meta property="og:image" content="media/room-brick-1600.webp">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/jeanluc-bold.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Layout: nocny bar – czarne tło, zielone „boazeryjne” panele, łukowe ramki jak okrągłe lustro na ceglanej ścianie. */
+:root {
+  --ink: #0b0b0a;          /* tło – czerń z bar.gwar.bar, lekko ocieplona */
+  --surface: #151513;
+  --bottle: #123a2b;       /* zielona boazeria z sali */
+  --bottle-deep: #0b2419;
+  --pink: #DA3365;         /* kolor marki */
+  --pink-text: #E8507F;    /* róż do tekstu na ciemnym tle (AA) */
+  --cream: #E2E1D8;        /* kolor logotypu */
+  --text: #ffffff;
+  --muted: #b5b3a8;
+  --line: rgba(226, 225, 216, .14);
+  --font-display: 'JeanLuc', 'Arial Narrow', 'Helvetica Neue', sans-serif;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.6rem, 3vw, 2.2rem);
+  --step-3: clamp(2.4rem, 6vw, 4.2rem);
+  --step-4: clamp(3.4rem, 11vw, 9rem);
+  --gutter: clamp(16px, 4vw, 48px);
+  --radius: 10px;
+  --pill: 999px;
+  color-scheme: dark;
+}
+
+@font-face {
+  font-family: 'JeanLuc';
+  src: url('fonts/jeanluc-bold.woff2') format('woff2');
+  font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  overflow-x: clip;
+}
+img, video { display: block; max-width: 100%; }
+a { color: var(--pink-text); text-underline-offset: 3px; }
+a:hover { color: var(--text); }
+:focus-visible { outline: 3px solid var(--cream); outline-offset: 3px; border-radius: 4px; }
+p { margin: 0 0 1em; }
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: normal;
+  text-transform: uppercase;
+  line-height: .95;
+  margin: 0;
+  text-wrap: balance;
+}
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-2); }
+.wrap { max-width: 1280px; margin: 0 auto; padding-inline: var(--gutter); }
+.eyebrow {
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+.lead { font-size: var(--step-1); color: var(--cream); max-width: 34ch; }
+.todo { background: #ffe066; color: #000; padding: 0 .3em; border-radius: 3px; font-family: var(--font-body); text-transform: none; font-size: .85em; letter-spacing: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: .5em;
+  padding: .95em 1.6em;
+  border-radius: var(--pill);
+  font-weight: 700; text-decoration: none; font-size: 1rem;
+  border: 2px solid var(--pink);
+  background: var(--pink); color: #fff;
+  transition: background .2s, color .2s, transform .2s;
+  cursor: pointer; font-family: var(--font-body);
+}
+.btn:hover { background: #b01c48; border-color: #b01c48; color: #fff; transform: translateY(-2px); }
+.btn--ghost { background: transparent; border-color: var(--line); color: var(--cream); }
+.btn--ghost:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+
+/* Header */
+.top {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  transition: background .3s, backdrop-filter .3s;
+}
+.top.is-solid { background: rgba(11, 11, 10, .82); backdrop-filter: blur(10px); }
+.top__in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; }
+.top__logo { display: flex; align-items: center; gap: .8rem; text-decoration: none; color: var(--muted); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; }
+.logo { color: var(--cream); height: auto; }
+.top__logo .logo { width: 92px; }
+.top nav { display: flex; gap: 1.6rem; align-items: center; }
+.top nav a:not(.btn) { color: var(--cream); text-decoration: none; font-size: .92rem; }
+.top nav a:not(.btn):hover { color: var(--pink-text); }
+.top .btn { padding: .6em 1.2em; font-size: .9rem; }
+@media (max-width: 820px) { .top nav a:not(.btn) { display: none; } }
+
+/* Hero */
+.hero { position: relative; padding-top: calc(64px + clamp(2rem, 6vw, 5rem)); padding-bottom: clamp(2rem, 5vw, 4rem); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: clamp(2rem, 5vw, 5rem); align-items: end; }
+.hero h1 { font-size: var(--step-4); color: var(--text); }
+.hero h1 .pink { color: var(--pink); display: block; }
+.hero__sub { margin-top: 1.6rem; }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+.arch {
+  position: relative; overflow: hidden;
+  border-radius: 999px 999px var(--radius) var(--radius);
+  aspect-ratio: 9 / 15; max-width: 100%;
+  background: var(--surface);
+}
+.arch video, .arch img { width: 100%; height: 100%; object-fit: cover; }
+.hero__media { justify-self: end; width: min(100%, 400px); position: relative; }
+.hero__badge {
+  position: absolute; left: -2.2rem; bottom: 2.4rem;
+  width: 8.2rem; height: 8.2rem; border-radius: 50%;
+  background: var(--pink); color: #fff;
+  display: grid; place-content: center; text-align: center;
+  font-family: var(--font-display); text-transform: uppercase; line-height: 1; font-size: 1.05rem;
+  transform: rotate(-10deg);
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+.hero__badge small { display: block; font-family: var(--font-body); text-transform: none; font-size: .72rem; margin-top: .35rem; line-height: 1.2; }
+.proof { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; margin-top: clamp(2.5rem, 5vw, 4rem); padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.proof div { min-width: 0; }
+.proof strong { display: block; font-family: var(--font-display); font-size: var(--step-2); font-weight: normal; color: var(--cream); line-height: 1; font-variant-numeric: tabular-nums; }
+.proof div > span { color: var(--muted); font-size: .88rem; }
+@media (max-width: 820px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__media { justify-self: center; width: min(100%, 340px); }
+  .hero__badge { left: -.6rem; }
+}
+
+/* Marquee */
+.marquee { border-block: 1px solid var(--line); overflow: hidden; padding-block: 1.1rem; background: var(--ink); }
+.marquee__track { display: flex; width: max-content; gap: 2.5rem; font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.6rem, 4vw, 2.8rem); color: var(--cream); white-space: nowrap; }
+.marquee__track span::after { content: '✱'; color: var(--pink); margin-left: 2.5rem; font-size: .6em; vertical-align: middle; }
+
+/* Why */
+.section { padding-block: clamp(4rem, 10vw, 8rem); }
+.why__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: end; margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
+.why__head h2 { color: var(--pink-text); }
+.why__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.6rem); }
+.why__item { display: flex; flex-direction: column; gap: 1rem; }
+.why__item figure { margin: 0; overflow: hidden; border-radius: var(--radius); aspect-ratio: 3 / 4; }
+.why__item img { width: 100%; height: 100%; object-fit: cover; }
+.why__item:nth-child(even) { margin-top: 3rem; }
+.why__item h3 { font-size: 1.5rem; color: var(--cream); }
+.why__item p { color: var(--muted); font-size: .95rem; margin: 0; }
+@media (max-width: 960px) { .why__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .why__head { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .why__grid { grid-template-columns: 1fr; } .why__item:nth-child(even) { margin-top: 0; } }
+
+/* Formats – horizontal pin on wide screens */
+.formats { background: var(--bottle); position: relative; overflow: hidden; }
+.formats__inner { padding-block: clamp(4rem, 8vw, 6rem); }
+.formats__head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.formats__head h2 { color: var(--cream); max-width: 12ch; }
+.formats__head p { color: var(--cream); opacity: .85; max-width: 38ch; margin: 0; }
+.track { display: flex; gap: clamp(1rem, 2.5vw, 2rem); padding-inline: var(--gutter); width: max-content; }
+.card {
+  width: min(78vw, 420px); flex: none;
+  background: var(--bottle-deep); border-radius: var(--radius); overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.card figure { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; }
+.card img { width: 100%; height: 100%; object-fit: cover; }
+.card__body { padding: 1.5rem 1.5rem 1.8rem; display: flex; flex-direction: column; gap: .8rem; flex: 1; }
+.card__kicker { font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pink-text); margin: 0; }
+.card h3 { color: var(--cream); font-size: 2rem; }
+.card p { color: var(--cream); opacity: .82; margin: 0; font-size: .97rem; }
+.card ul { margin: .4rem 0 0; padding: 0; list-style: none; display: grid; gap: .4rem; font-size: .92rem; color: var(--cream); }
+.card li::before { content: '✱'; color: var(--pink); margin-right: .6rem; font-size: .8em; }
+@media (max-width: 899px) {
+  .track { width: auto; flex-direction: column; align-items: stretch; }
+  .card { width: 100%; }
+  .card figure { aspect-ratio: 16 / 10; }
+}
+
+/* Mirror: the round mirror on the brick wall opens into the room */
+.mirror__stage { position: relative; height: 100svh; min-height: 520px; overflow: hidden; display: grid; place-items: center; }
+.mirror__img { position: absolute; inset: 0; }
+.mirror__img img { width: 100%; height: 100%; object-fit: cover; }
+.mirror__ring { position: absolute; left: 50%; top: 50%; width: 0; height: 0; border-radius: 50%; border: 3px solid var(--cream); transform: translate(-50%, -50%); opacity: 0; pointer-events: none; }
+.mirror__text { position: relative; text-align: center; padding-inline: var(--gutter); text-shadow: 0 2px 30px rgba(0,0,0,.6); }
+.mirror__text h2 { font-size: var(--step-4); color: var(--text); }
+.mirror__text p { color: var(--cream); letter-spacing: .16em; text-transform: uppercase; font-size: .8rem; margin-bottom: 1rem; }
+.mirror__stage::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(11,11,10,.55)); pointer-events: none; }
+.mirror__text { z-index: 1; }
+
+/* Pour: frame sequence scrubbed by scroll */
+.pour__stage { position: relative; height: 100svh; min-height: 520px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: var(--gutter); padding-inline: var(--gutter); max-width: 1280px; margin: 0 auto; }
+.pour__media { position: relative; height: min(86svh, 760px); aspect-ratio: 9 / 16; max-width: 100%; justify-self: center; border-radius: 999px 999px var(--radius) var(--radius); overflow: hidden; background: var(--surface); }
+.pour__media img, .pour__media canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pour__text h2 { font-size: var(--step-3); }
+.pour__text h2 em { font-style: normal; color: var(--pink); }
+.pour__lines { margin-top: 1.6rem; display: grid; gap: .8rem; max-width: 34ch; }
+.pour__lines p { margin: 0; color: var(--cream); padding-top: .8rem; border-top: 1px solid var(--line); }
+.pour__lines strong { color: var(--text); display: block; }
+@media (max-width: 860px) {
+  .pour__stage { grid-template-columns: 1fr; padding: 0; max-width: none; }
+  .pour__media { position: absolute; inset: 0; height: 100%; width: 100%; aspect-ratio: auto; border-radius: 0; }
+  .pour__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(11,11,10,.15) 30%, rgba(11,11,10,.85)); }
+  .pour__text { position: relative; z-index: 1; align-self: end; padding: 0 var(--gutter) calc(2.5rem + 64px); }
+}
+
+/* Cocktail menu: Wallet-style stack */
+.menu { margin-top: clamp(4rem, 8vw, 6rem); }
+.menu__head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.menu__head h3 { font-size: var(--step-3); color: var(--pink-text); }
+.menu__head .eyebrow { margin: 0; }
+.stack { display: grid; gap: 6svh; padding-bottom: 4svh; }
+.drink {
+  position: sticky; top: calc(84px + var(--i) * 16px);
+  display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden;
+  min-height: min(62svh, 520px); transform-origin: 50% 0;
+}
+.drink figure { margin: 0; overflow: hidden; }
+.drink img { width: 100%; height: 100%; object-fit: cover; }
+.drink__body { padding: clamp(1.4rem, 4vw, 3rem); display: flex; flex-direction: column; justify-content: end; gap: .8rem; min-width: 0; }
+.drink__kicker { font-size: .75rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pink-text); margin: 0; }
+.drink h4 { font-family: var(--font-display); font-weight: normal; text-transform: uppercase; font-size: var(--step-3); line-height: .95; margin: 0; color: var(--cream); }
+.drink p { color: var(--muted); margin: 0; }
+.drink__shade { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; }
+@media (max-width: 700px) {
+  .drink { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; height: 72svh; top: calc(76px + var(--i) * 12px); }
+  .drink h4 { font-size: 2rem; }
+}
+
+/* Native scroll-driven reveals where supported (off the main thread) */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+  }
+}
+@keyframes rise { from { transform: translateY(56px); opacity: .25; } to { transform: none; opacity: 1; } }
+
+/* Colour wash: with JS, sections hand their background to <body> */
+body { transition: none; }
+html.wash .marquee, html.wash .formats, html.wash .space, html.wash .quote, html.wash .contact { background: transparent; }
+
+/* Packages */
+.packs__head { text-align: center; max-width: 720px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); }
+.packs__head h2 { color: var(--pink-text); }
+.packs__head p { color: var(--muted); margin-top: 1rem; }
+.packs__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; align-items: stretch; }
+.pack {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 2rem 1.6rem; display: flex; flex-direction: column; gap: 1rem;
+  background: var(--surface); position: relative; min-width: 0;
+}
+.pack--featured { background: var(--bottle); border-color: var(--bottle); }
+.pack__tag { position: absolute; top: -.8rem; left: 1.6rem; background: var(--pink); color: #fff; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding: .35em .9em; border-radius: var(--pill); font-weight: 700; }
+.pack h3 { font-size: 2rem; color: var(--cream); }
+.pack__for { color: var(--muted); margin: 0; font-size: .92rem; }
+.pack--featured .pack__for { color: var(--cream); opacity: .8; }
+.pack__price { font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--text); margin: .4rem 0; }
+.pack__price small { font-family: var(--font-body); font-size: .85rem; color: var(--muted); text-transform: none; }
+.pack ul { list-style: none; padding: 1rem 0 0; margin: 0; display: grid; gap: .55rem; border-top: 1px solid var(--line); flex: 1; }
+.pack li { padding-left: 1.5rem; position: relative; color: var(--cream); font-size: .95rem; }
+.pack li::before { content: '✱'; position: absolute; left: 0; color: var(--pink); font-size: .8em; top: .15em; }
+.pack .btn { align-self: flex-start; margin-top: .6rem; }
+.packs__note { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 2rem; }
+@media (max-width: 900px) { .packs__grid { grid-template-columns: 1fr; } }
+
+/* Space */
+.space { background: var(--surface); }
+.space__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.space h2 { color: var(--cream); }
+.specs { margin: 2rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.specs div { background: var(--surface); padding: 1.2rem; min-width: 0; }
+.specs dt { color: var(--muted); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
+.specs dd { margin: .3rem 0 0; font-family: var(--font-display); text-transform: uppercase; font-size: 1.7rem; line-height: 1; color: var(--text); font-variant-numeric: tabular-nums; }
+.specs dd small { display: block; font-family: var(--font-body); text-transform: none; font-size: .82rem; color: var(--muted); margin-top: .35rem; line-height: 1.3; }
+.gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: clamp(90px, 11vw, 150px); gap: .8rem; }
+.gallery figure { margin: 0; overflow: hidden; border-radius: var(--radius); }
+.gallery img { width: 100%; height: 118%; object-fit: cover; }
+.g1 { grid-column: 1 / 4; grid-row: span 4; border-radius: 999px 999px var(--radius) var(--radius) !important; }
+.g2 { grid-column: 4 / 7; grid-row: span 2; }
+.g3 { grid-column: 4 / 7; grid-row: span 2; }
+.g4 { grid-column: 1 / 3; grid-row: span 3; }
+.g5 { grid-column: 3 / 7; grid-row: span 3; }
+@media (max-width: 860px) { .space__grid { grid-template-columns: 1fr; } }
+
+/* Steps */
+.steps__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; counter-reset: step; margin-top: 3rem; }
+.step { border-top: 2px solid var(--pink); padding-top: 1.2rem; min-width: 0; }
+.step::before { counter-increment: step; content: counter(step, decimal-leading-zero); font-family: var(--font-display); font-size: 3rem; color: var(--pink-text); line-height: 1; display: block; margin-bottom: .8rem; }
+.step h3 { font-size: 1.4rem; color: var(--cream); margin-bottom: .5rem; }
+.step p { color: var(--muted); font-size: .95rem; margin: 0; }
+.steps h2 { color: var(--cream); max-width: 16ch; }
+@media (max-width: 900px) { .steps__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .steps__grid { grid-template-columns: 1fr; } }
+
+/* Review band */
+.quote { background: var(--pink); color: #fff; text-align: center; }
+.quote__stars { font-size: 1.6rem; letter-spacing: .2em; }
+.quote__big { font-family: var(--font-display); text-transform: uppercase; font-size: var(--step-3); line-height: .95; margin: 1rem auto; max-width: 16ch; }
+.quote p { max-width: 50ch; margin-inline: auto; }
+.quote a { color: #fff; font-weight: 700; }
+
+/* FAQ */
+.faq__grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 5rem); }
+.faq h2 { color: var(--pink-text); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 1.2rem 2.5rem 1.2rem 0; position: relative; font-weight: 700; color: var(--cream); font-size: 1.05rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; position: absolute; right: .3rem; top: .9rem; font-size: 1.6rem; color: var(--pink); transition: transform .25s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--muted); padding-right: 2rem; }
+@media (max-width: 860px) { .faq__grid { grid-template-columns: 1fr; } }
+
+/* Contact form */
+.contact { background: var(--bottle); }
+.contact__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); }
+.contact h2 { color: var(--cream); }
+.contact__direct { margin-top: 2rem; display: grid; gap: 1rem; }
+.contact__direct div { padding-top: 1rem; border-top: 1px solid rgba(226,225,216,.2); }
+.contact__direct span { display: block; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); opacity: .7; }
+.contact__direct a, .contact__direct b { font-family: var(--font-display); font-weight: normal; font-size: 1.8rem; color: var(--text); text-decoration: none; text-transform: uppercase; user-select: all; }
+form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; background: var(--bottle-deep); padding: clamp(1.2rem, 3vw, 2rem); border-radius: var(--radius); }
+.field { display: grid; gap: .35rem; min-width: 0; }
+.field--full { grid-column: 1 / -1; }
+label { font-size: .82rem; color: var(--cream); letter-spacing: .04em; }
+input, select, textarea {
+  width: 100%; font: inherit; color: var(--text);
+  background: rgba(255,255,255,.06); border: 1px solid rgba(226,225,216,.22);
+  border-radius: 8px; padding: .8rem .9rem;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--pink); outline-offset: 1px; border-color: transparent; }
+textarea { min-height: 7rem; resize: vertical; }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; position: relative; }
+.chips input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.chips label { border: 1px solid rgba(226,225,216,.3); border-radius: var(--pill); padding: .5rem 1rem; cursor: pointer; font-size: .9rem; transition: background .2s, border-color .2s; }
+.chips input:checked + label { background: var(--pink); border-color: var(--pink); color: #fff; }
+.chips input:focus-visible + label { outline: 3px solid var(--cream); outline-offset: 2px; }
+.form__foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+.form__foot small { color: var(--cream); opacity: .7; max-width: 36ch; }
+.error { color: #ffb3c6; font-size: .85rem; grid-column: 1 / -1; margin: 0; }
+.done { grid-column: 1 / -1; background: var(--ink); border-radius: var(--radius); padding: 1.4rem; }
+.done h3 { font-size: 1.7rem; color: var(--cream); margin-bottom: .6rem; }
+.done pre { white-space: pre-wrap; font-family: var(--font-body); font-size: .9rem; color: var(--cream); background: var(--surface); padding: 1rem; border-radius: 8px; margin: 1rem 0; user-select: all; }
+.done__actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+@media (max-width: 860px) { .contact__grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { form { grid-template-columns: 1fr; } }
+
+/* Footer */
+.foot { padding-block: 3rem 6rem; color: var(--muted); font-size: .9rem; }
+.foot__in { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; justify-content: space-between; align-items: center; }
+.foot .logo { width: 120px; }
+
+/* Mobile sticky CTA */
+.sticky {
+  position: fixed; inset: auto 0 0 0; z-index: 40;
+  padding: .7rem var(--gutter) calc(.7rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(11,11,10,.9); backdrop-filter: blur(8px);
+  border-top: 1px solid var(--line);
+  display: none; gap: .6rem;
+}
+.sticky .btn { flex: 1; justify-content: center; padding: .8em 1em; }
+@media (max-width: 820px) { .sticky { display: flex; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap top__in">
+    <a class="top__logo" href="#start" aria-label="Bar Gwar – oferta dla firm, na górę strony">
+      <svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="163 390 754 300" fill="none">
+<path d="M329.701 496.563L221.529 505.143L223.521 537.625L274.466 534.254C277.75 533.593 281.133 533.605 284.412 534.289C287.691 534.974 290.797 536.317 293.542 538.238C296.949 542.292 298.652 547.51 298.291 552.794C298.22 555.886 297.501 558.928 296.181 561.726C294.862 564.523 292.971 567.013 290.63 569.035C283.564 575 275.105 579.084 266.039 580.909C251.642 584.162 236.898 585.629 222.142 585.276C204.062 585.276 191.294 582.109 183.838 575.776C179.756 571.86 176.62 567.064 174.669 561.755C172.718 556.445 172.002 550.76 172.576 545.133C172.615 532.321 176.223 519.773 182.995 508.897C190.738 496.86 200.757 486.45 212.489 478.253C226.713 468.15 242.157 459.888 258.455 453.662C278.016 446.053 298.185 440.108 318.746 435.889L311.468 389.923C291.254 394.703 271.682 401.879 253.169 411.297C235.915 420.005 220.04 431.208 206.054 444.545C192.848 457.034 182.114 471.901 174.415 488.366C166.883 504.826 163.065 522.742 163.23 540.843C162.806 556.068 165.955 571.18 172.423 584.969C178.103 596.678 187.075 606.476 198.24 613.161C210.142 619.883 223.646 623.246 237.311 622.891C250.557 623.359 263.749 620.982 275.998 615.919C285.565 611.904 293.612 604.957 298.981 596.078C304.247 586.934 306.897 576.519 306.642 565.97C306.745 558.142 305.448 550.359 302.811 542.988C301.526 539.51 299.99 536.13 298.215 532.875L332.076 530.194L329.701 496.563Z" fill="currentColor"/>
+<path d="M595.303 454.122L554.318 450.752C545.686 482.774 538.026 510.021 531.335 532.493C524.67 555.016 518.618 573.402 513.332 587.651C509.304 599.052 504.333 610.096 498.47 620.67C495.172 626.867 490.787 632.42 485.523 637.064C482.098 639.988 477.768 641.639 473.266 641.737C470.012 641.727 466.845 640.68 464.226 638.75C461.227 636.429 459.009 633.249 457.867 629.633C456.277 624.214 455.553 618.578 455.722 612.932C456.088 600.975 457.549 589.076 460.089 577.386C462.923 562.447 467.06 544.674 472.5 523.76C477.939 502.846 484.068 479.557 491.192 453.28L449.823 450.292C442.316 483.847 435.293 511.937 428.756 534.562C422.244 557.544 416.269 575.701 410.753 589.797C406.805 601.012 401.668 611.773 395.431 621.896C391.763 627.96 386.855 633.181 381.029 637.217C376.659 639.93 371.616 641.364 366.473 641.354C362.862 641.398 359.31 640.443 356.207 638.596C352.838 636.312 350.288 633.01 348.93 629.173C346.976 623.643 346.067 617.799 346.248 611.936C346.473 605.198 347.819 598.544 350.232 592.248C352.913 584.587 356.131 576.926 360.038 567.427C363.945 557.927 367.699 548.045 372.219 536.783C376.739 525.522 380.799 512.958 385.012 499.245C389.438 484.372 392.867 469.221 395.278 453.893L351.228 450.598C348.623 470.466 346.248 488.775 344.103 505.527C341.958 522.279 340.375 537.294 339.354 550.573C338.204 563.75 337.668 575.164 337.668 584.587C337.352 601.846 339.414 619.066 343.797 635.762C346.662 647.663 352.218 658.749 360.038 668.167C362.722 671.529 366.108 674.265 369.958 676.183C373.808 678.102 378.031 679.157 382.331 679.276C388.724 679.26 395.023 677.738 400.717 674.832C407.622 670.957 413.69 665.749 418.567 659.511C425.752 650.433 431.918 640.594 436.953 630.169C440.86 622.509 444.614 613.392 448.674 603.433C449.67 613.239 450.819 621.972 452.198 629.403C453.829 639.94 456.762 650.233 460.932 660.047C463.285 666.132 467.291 671.439 472.5 675.369C476.472 678.02 481.13 679.458 485.906 679.505C492.736 679.453 499.428 677.575 505.288 674.066C512.962 669.008 519.444 662.342 524.287 654.531C532.31 642.05 539.084 628.809 544.512 615.001C551.56 597.994 559.221 576.365 567.494 550.113C575.768 523.862 585.038 491.865 595.303 454.122Z" fill="currentColor"/>
+<path d="M730.288 418.805C726.867 411.088 721.606 404.328 714.966 399.116C708.967 394.471 701.562 392.011 693.976 392.145C685.716 392.179 677.59 394.231 670.303 398.12C661.298 403.357 653.474 410.399 647.321 418.805C637.935 431.385 629.898 444.917 623.342 459.178C615.069 476.287 606.029 497.788 596.223 523.682C586.417 549.576 575.666 580.858 563.971 617.528L606.259 620.822C611.621 603.202 616.728 587.038 621.58 572.329C626.432 557.62 630.824 544.852 634.757 534.024L701.636 530.117L703.015 497.712C694.906 498.705 686.953 500.712 679.343 503.687C671.076 506.737 663.059 510.425 655.365 514.719C648.946 518.322 642.8 522.394 636.979 526.9C644.64 507.441 651.228 491.277 657.51 478.636C662.555 467.777 668.772 457.502 676.049 447.993C680.565 441.896 686.373 436.874 693.056 433.284C698.296 430.687 704.062 429.324 709.91 429.3C714.364 429.144 718.78 430.175 722.704 432.288C726.333 434.546 729.15 437.899 730.748 441.864C732.948 447.442 733.966 453.416 733.736 459.407C733.586 466.006 732.424 472.543 730.288 478.789C727.99 485.888 725.002 493.932 721.325 502.921C717.724 511.884 713.664 521.92 709.451 533.565C705.237 545.209 700.947 557.467 696.887 571.869C692.513 587.134 689.135 602.668 686.774 618.371L730.748 621.665C733.199 601.593 735.242 583.514 736.877 567.426C738.562 551.261 739.864 536.782 740.86 523.529C741.856 510.276 742.392 498.325 742.392 487.293C742.439 474.763 741.388 462.254 739.251 449.908C737.625 439.195 734.612 428.74 730.288 418.805Z" fill="currentColor"/>
+<path d="M869.563 606.956C858.935 602.772 849.053 596.9 840.298 589.566C833.544 583.824 827.477 577.32 822.218 570.184C836.914 565.215 851.059 558.745 864.43 550.879C874.486 545.152 882.861 536.883 888.715 526.9C893.369 517.403 894.923 506.684 893.158 496.257C890.477 476.185 883.122 461.936 871.171 453.662C857.501 445.053 841.061 441.984 825.206 445.082C817.337 446.079 809.619 448.034 802.223 450.904C795.111 453.81 788.767 458.319 783.684 464.081C777.361 471.599 772.432 480.187 769.128 489.438C764.215 503.03 760.749 517.102 758.786 531.42C756.08 548.58 753.934 569.699 752.351 594.775C750.768 619.852 749.798 649.449 749.44 683.565L792.035 680.501C792.035 649.857 792.647 623.963 793.643 602.436C794.639 580.909 795.942 563.059 797.704 548.81C798.922 537.098 801.256 525.528 804.675 514.26C806.766 507.176 810.171 500.55 814.711 494.724C818.269 490.576 822.871 487.455 828.041 485.685C833.639 483.914 839.381 482.633 845.201 481.854C852.072 480.69 859.091 480.69 865.962 481.854C871.275 482.74 876.25 485.043 880.365 488.519C883.969 491.633 886.289 495.973 886.876 500.7C887.417 504.478 886.968 508.332 885.574 511.885C883.402 516.227 879.989 519.827 875.768 522.227C868.508 526.687 860.806 530.384 852.785 533.259C842.443 537.242 828.424 541.762 810.88 546.818C813.676 566.606 819.679 585.806 828.654 603.662C836.45 618.996 847.449 632.477 860.906 643.192C874.522 653.687 890.177 661.228 906.871 665.332L910.625 616.762C896.577 615.249 882.778 611.954 869.563 606.956Z" fill="currentColor"/>
+</svg>
+      <span>dla firm</span>
+    </a>
+    <nav aria-label="Sekcje">
+      <a href="#karta">Koktajle</a>
+      <a href="#pakiety">Pakiety</a>
+      <a href="#formaty">Okazje</a>
+      <a href="#sala">Sala</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#zapytanie" data-ev="cta_header">Zapytaj o termin</a>
+    </nav>
+  </div>
+</header>
+
+<main id="start">
+
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap hero__grid">
+      <div>
+        <p class="eyebrow">Koktajle dla firm · Kazimierz, Mostowa 8</p>
+        <h1 id="hero-h" class="js-split">ZRÓBCIE <span class="pink">TROCHĘ GWARU</span></h1>
+        <p class="lead hero__sub">Firmowy wieczór zbudowany wokół koktajli. Wigilie, integracje i Gwar na wyłączność w barze przy Kładce Bernatka.</p>
+        <div class="hero__ctas">
+          <a class="btn" href="#zapytanie" data-ev="cta_hero">Zapytaj o termin</a>
+          <a class="btn btn--ghost" href="#karta">Zobacz kartę</a>
+        </div>
+      </div>
+      <div class="hero__media">
+        <div class="arch js-arch">
+          <video autoplay muted loop playsinline preload="metadata" poster="media/bar-loop-poster.webp" aria-label="Barman nalewa składniki koktajlu do shakera">
+            <source src="media/bar-loop.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="hero__badge js-badge">Grudzień<small>terminy schodzą najszybciej</small></p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="proof">
+        <div><strong><span class="js-count" data-to="4.9" data-dec="1">4,9</span> ★</strong><span><span class="js-count" data-to="1153">1 153</span> opinii w Google</span></div>
+        <div><strong>do <span class="js-count" data-to="50">50</span> osób</strong><span>w sali</span></div>
+        <div><strong>ok. <span class="js-count" data-to="25">25</span> osób</strong><span>na patio w sezonie</span></div>
+        <div><strong>Kazimierz</strong><span>przy Kładce Bernatka</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track js-marquee">
+      <span>Wigilie firmowe</span><span>Integracje</span><span>Wynajem na wyłączność</span><span>Koktajle robione na miejscu</span><span>Grzańce w Gwarze</span>
+      <span>Wigilie firmowe</span><span>Integracje</span><span>Wynajem na wyłączność</span><span>Koktajle robione na miejscu</span><span>Grzańce w Gwarze</span>
+    </div>
+  </div>
+
+  <section class="mirror" aria-labelledby="mirror-h" data-bg="#0b0b0a">
+    <div class="mirror__stage js-mirror">
+      <div class="mirror__img"><img src="media/room-brick-1600.webp" srcset="media/room-brick-800.webp 800w, media/room-brick-1600.webp 1600w" sizes="100vw" alt="Sala Gwaru: ceglana ściana, okrągłe lustro i zielona boazeria" width="1067" height="1600" loading="lazy"></div>
+      <div class="mirror__ring" aria-hidden="true"></div>
+      <div class="mirror__text"><p>Zajrzyjcie do środka</p><h2 id="mirror-h">Wasza sala<br>na wieczór</h2></div>
+    </div>
+  </section>
+
+  <section class="pour" aria-labelledby="bar-h" data-bg="#0b0b0a">
+    <div class="pour__stage js-pour">
+      <div class="pour__media">
+        <img src="media/pour/01.webp" alt="Barman przelewa składnik koktajlu z jiggera do shakera" width="540" height="960">
+        <canvas aria-hidden="true"></canvas>
+      </div>
+      <div class="pour__text">
+        <p class="eyebrow">Za barem</p>
+        <h2 id="bar-h">Koktajle, o których <em>się gada</em></h2>
+        <div class="pour__lines">
+          <p><strong>Karta na wasz wieczór</strong>Ustalamy z wami kilka pozycji, żeby bar szedł szybko, a nikt nie czekał.</p>
+          <p><strong>Koktajl z nazwą firmy</strong>Przygotujemy autorski koktajl na waszą imprezę. <span class="todo">potwierdzić</span></p>
+          <p><strong>Bezalkoholowe też na poziomie</strong>Lemoniady, kawa Mott, herbaty Ronnefeldt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="karta" aria-labelledby="menu-h" data-bg="#0b0b0a">
+    <div class="wrap menu">
+      <div class="menu__head">
+        <p class="eyebrow">Menu firmowe</p>
+        <h3 id="menu-h">Karta na wasz wieczór</h3>
+      </div>
+      <div class="stack js-stack">
+        <article class="drink" style="--i: 0"><figure><img src="media/coupe-bar-800.webp" srcset="media/coupe-bar-800.webp 800w, media/coupe-bar-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Czerwony koktajl w kryształowym kieliszku na barze" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Klasyk Gwaru</p><h4><span class="todo">nazwa koktajlu</span></h4><p><span class="todo">skład z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
+        <article class="drink" style="--i: 1"><figure><img src="media/spritz-green-800.webp" srcset="media/spritz-green-800.webp 800w, media/spritz-green-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Pomarańczowy koktajl z preclem przy zielonej ścianie" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Na powitanie</p><h4><span class="todo">nazwa koktajlu</span></h4><p><span class="todo">skład z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
+        <article class="drink" style="--i: 2"><figure><img src="media/coupe-tray-800.webp" srcset="media/coupe-tray-800.webp 800w, media/coupe-tray-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Koktajl z anyżem na srebrnej tacy" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Autorski</p><h4><span class="todo">nazwa koktajlu</span></h4><p><span class="todo">skład z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
+        <article class="drink" style="--i: 3"><figure><img src="media/winter-flatlay-800.webp" srcset="media/winter-flatlay-800.webp 800w, media/winter-flatlay-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Grzane wino i gruszkowy grzaniec z cynamonem" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Na wigilię</p><h4>Grzańce w Gwarze</h4><p><span class="todo">warianty z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-h" data-bg="#0b0b0a">
+    <div class="wrap">
+      <div class="why__head">
+        <h2 id="why-h">Dlaczego u nas, a nie w hotelowej sali</h2>
+        <p class="lead">Gwar to po polsku szum rozmów. Właśnie tego chcecie na firmowej imprezie: ludzi, którzy siedzą przy jednym stole i nie patrzą na zegarek.</p>
+      </div>
+      <div class="why__grid">
+        <article class="why__item js-reveal">
+          <figure><img src="media/room-brick-800.webp" srcset="media/room-brick-800.webp 800w, media/room-brick-1600.webp 1600w" sizes="(max-width: 520px) 100vw, 25vw" alt="Sala Gwaru: ceglana ściana, okrągłe lustro, zielona boazeria" loading="lazy" width="800" height="1200"></figure>
+          <h3>Wnętrze, które robi zdjęcia</h3>
+          <p>Cegła, zielona boazeria, okrągłe lustro i dużo roślin. Nie trzeba dekorować.</p>
+        </article>
+        <article class="why__item js-reveal">
+          <figure><img src="media/coupe-hand-800.webp" srcset="media/coupe-hand-800.webp 800w, media/coupe-hand-1600.webp 1600w" sizes="(max-width: 520px) 100vw, 25vw" alt="Czerwony koktajl w kryształowym kieliszku na tle baru" loading="lazy" width="800" height="1200"></figure>
+          <h3>Bar, który nadąża</h3>
+          <p>Koktajle robimy na miejscu. Kartę na wieczór ustalamy z wami.</p>
+        </article>
+        <article class="why__item js-reveal">
+          <figure><img src="media/garden-mulled-800.webp" srcset="media/garden-mulled-800.webp 800w, media/garden-mulled-1600.webp 1600w" sizes="(max-width: 520px) 100vw, 25vw" alt="Dwie osoby z grzańcami przy zielonym stoliku w ogródku" loading="lazy" width="800" height="1200"></figure>
+          <h3>Kazimierz za drzwiami</h3>
+          <p>Mostowa 8, kilka kroków od Kładki Bernatka i bulwarów. Łatwo dojechać, trudno wyjść.</p>
+        </article>
+        <article class="why__item js-reveal">
+          <figure><img src="media/room-plants-800.webp" srcset="media/room-plants-800.webp 800w, media/room-plants-1600.webp 1600w" sizes="(max-width: 520px) 100vw, 25vw" alt="Kanapa pod oknem otoczona roślinami" loading="lazy" width="800" height="1200"></figure>
+          <h3>4,9 w Google</h3>
+          <p>Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="formats" id="formaty" aria-labelledby="formats-h" data-bg="#123a2b">
+    <div class="formats__inner js-pin">
+      <div class="wrap formats__head">
+        <h2 id="formats-h">Na jaką okazję?</h2>
+        <p>Cztery najczęstsze scenariusze. Każdy dopasujemy do liczby osób, budżetu i godzin.</p>
+      </div>
+      <div class="track js-track">
+        <article class="card">
+          <figure><img src="media/mulled-oranges-800.webp" srcset="media/mulled-oranges-800.webp 800w, media/mulled-oranges-1600.webp 1600w" sizes="(max-width: 899px) 100vw, 420px" alt="Grzane wino w szklance na tle pomarańczy" loading="lazy" width="800" height="1200"></figure>
+          <div class="card__body">
+            <p class="card__kicker">Listopad–grudzień</p>
+            <h3>Wigilia firmowa</h3>
+            <p>Grudniowy wieczór dla całego zespołu. Grzańce na powitanie, przekąski i bar, który nie robi przerw.</p>
+            <ul><li>Grzańce w Gwarze na start</li><li>Cała sala albo jej część</li><li>Playlista pod wasz zespół</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <figure><img src="media/spritz-hand-800.webp" srcset="media/spritz-hand-800.webp 800w, media/spritz-hand-1600.webp 1600w" sizes="(max-width: 899px) 100vw, 420px" alt="Dłoń z koktajlem i preclem w kieliszku na tle zielonej ściany" loading="lazy" width="800" height="1200"></figure>
+          <div class="card__body">
+            <p class="card__kicker">Cały rok</p>
+            <h3>Integracja zespołu</h3>
+            <p>Afterwork po kwartale, powitanie nowych osób, wyjście po wygranym projekcie.</p>
+            <ul><li>Od kilku do 50 osób</li><li>Rezerwacja części sali</li><li>Ogródek na patio w sezonie</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <figure><img src="media/room-brick-wide-800.webp" srcset="media/room-brick-wide-800.webp 800w, media/room-brick-wide-1600.webp 1600w" sizes="(max-width: 899px) 100vw, 420px" alt="Pusta sala Gwaru ze stolikami, ceglaną ścianą i lustrem" loading="lazy" width="800" height="1200"></figure>
+          <div class="card__body">
+            <p class="card__kicker">Tylko dla was</p>
+            <h3>Gwar na wyłączność</h3>
+            <p>Cały lokal na wasz wieczór. Zamykamy drzwi dla innych gości, a muzykę i kartę ustawiamy pod was.</p>
+            <ul><li>Cała sala, do 50 osób</li><li>Własna karta koktajli</li><li>Godziny do ustalenia</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <figure><img src="media/coupe-tray-800.webp" srcset="media/coupe-tray-800.webp 800w, media/coupe-tray-1600.webp 1600w" sizes="(max-width: 899px) 100vw, 420px" alt="Koktajl z anyżem na srebrnej tacy" loading="lazy" width="800" height="1200"></figure>
+          <div class="card__body">
+            <p class="card__kicker">Coś innego?</p>
+            <h3>Twój pomysł</h3>
+            <p>Premiera, urodziny firmy, spotkanie z klientami, warsztaty koktajlowe <span class="todo">potwierdzić warsztaty</span>. Napiszcie, co planujecie.</p>
+            <ul><li>Format szyty na miarę</li><li>Rozmowa zamiast cennika</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pakiety" aria-labelledby="packs-h" data-bg="#0b0b0a">
+    <div class="wrap">
+      <div class="packs__head">
+        <p class="eyebrow">Pakiety</p>
+        <h2 id="packs-h">Wybierzcie punkt startu</h2>
+        <p>Ceny są orientacyjne. Ostateczną ofertę wyślemy po zapytaniu, dopasowaną do liczby osób i godzin.</p>
+      </div>
+      <div class="packs__grid">
+        <article class="pack js-reveal">
+          <h3>Afterwork</h3>
+          <p class="pack__for">Do ok. 20 osób · 3 godziny</p>
+          <p class="pack__price"><span class="todo">od … zł</span> <small>/ osoba</small></p>
+          <ul>
+            <li>Zarezerwowana strefa w sali</li>
+            <li>Koktajl powitalny</li>
+            <li>Przekąski do stołu</li>
+          </ul>
+          <a class="btn btn--ghost" href="#zapytanie" data-pack="Afterwork">Zapytaj o Afterwork</a>
+        </article>
+        <article class="pack pack--featured js-reveal">
+          <span class="pack__tag">Polecany na wigilię</span>
+          <h3>Wieczór firmowy</h3>
+          <p class="pack__for">20–50 osób · 4 godziny</p>
+          <p class="pack__price"><span class="todo">od … zł</span> <small>/ osoba</small></p>
+          <ul>
+            <li>Cała sala dla waszej grupy</li>
+            <li>Grzańce albo koktajl na powitanie</li>
+            <li>Ustalona karta koktajli</li>
+            <li>Przekąski przez cały wieczór</li>
+          </ul>
+          <a class="btn" href="#zapytanie" data-pack="Wieczór firmowy">Zapytaj o termin</a>
+        </article>
+        <article class="pack js-reveal">
+          <h3>Na wyłączność</h3>
+          <p class="pack__for">Cały lokal · godziny do ustalenia</p>
+          <p class="pack__price"><span class="todo">od … zł</span> <small>/ wieczór</small></p>
+          <ul>
+            <li>Gwar zamknięty dla innych gości</li>
+            <li>Własna karta i koktajl z nazwą firmy</li>
+            <li>Muzyka pod wasz zespół</li>
+            <li>Patio w sezonie</li>
+          </ul>
+          <a class="btn btn--ghost" href="#zapytanie" data-pack="Na wyłączność">Zapytaj o wyłączność</a>
+        </article>
+      </div>
+      <p class="packs__note"><span class="todo">Skład pakietów i ceny do potwierdzenia przez Gwar</span></p>
+    </div>
+  </section>
+
+  <section class="section space" id="sala" aria-labelledby="space-h" data-bg="#151513">
+    <div class="wrap space__grid">
+      <div>
+        <p class="eyebrow">Sala i ogródek</p>
+        <h2 id="space-h">Mała sala, duży gwar</h2>
+        <p class="lead" style="margin-top: 1.4rem">Jedna sala z barem, kanapami pod oknem i stolikami przy ceglanej ścianie. Wiosną i latem dochodzi patio.</p>
+        <dl class="specs">
+          <div><dt>Sala</dt><dd>do 50 osób<small>stolikami, z miejscem przy barze</small></dd></div>
+          <div><dt>Patio</dt><dd>ok. 25 osób<small>w sezonie, do 22:00</small></dd></div>
+          <div><dt>Ogródek od ulicy</dt><dd>8 stolików<small>w sezonie, bez rezerwacji</small></dd></div>
+          <div><dt>Adres</dt><dd>Mostowa 8<small>Kazimierz, przy Kładce Bernatka</small></dd></div>
+        </dl>
+        <p style="color: var(--muted); font-size: .9rem; margin-top: 1.2rem">Wi-Fi za darmo, psy mile widziane, płatność kartą i telefonem. Przy wejściu jest próg, toaleta jest w lokalu.</p>
+      </div>
+      <div class="gallery js-gallery">
+        <figure class="g1"><img src="media/room-brick-800.webp" srcset="media/room-brick-800.webp 800w, media/room-brick-1600.webp 1600w" sizes="(max-width: 860px) 50vw, 30vw" alt="Ceglana ściana z okrągłym lustrem i stolikami" loading="lazy" width="800" height="1200"></figure>
+        <figure class="g2"><img src="media/room-lamp-800.webp" srcset="media/room-lamp-800.webp 800w, media/room-lamp-1600.webp 1600w" sizes="(max-width: 860px) 50vw, 30vw" alt="Stoliki przy zielonej boazerii i różowa lampka" loading="lazy" width="800" height="1200"></figure>
+        <figure class="g3"><img src="media/table-berries-800.webp" srcset="media/table-berries-800.webp 800w, media/table-berries-1600.webp 1600w" sizes="(max-width: 860px) 50vw, 30vw" alt="Stolik z czerwonymi gałązkami w butelce" loading="lazy" width="800" height="1200"></figure>
+        <figure class="g4"><img src="media/room-sofa-800.webp" srcset="media/room-sofa-800.webp 800w, media/room-sofa-1600.webp 1600w" sizes="(max-width: 860px) 35vw, 20vw" alt="Kanapa i stolik przy półce z roślinami" loading="lazy" width="800" height="1200"></figure>
+        <figure class="g5"><img src="media/room-long-800.webp" srcset="media/room-long-800.webp 800w, media/room-long-1600.webp 1600w" sizes="(max-width: 860px) 65vw, 40vw" alt="Widok na całą salę z wejściem w głębi" loading="lazy" width="800" height="1200"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote section" aria-label="Opinie w Google" data-bg="#DA3365">
+    <div class="wrap">
+      <p class="quote__stars" aria-hidden="true">★★★★★</p>
+      <p class="quote__big">4,9 z 1 153 opinii</p>
+      <p>Tyle wystawili nam goście w Google (stan na 01.10.2026). <a href="https://maps.app.goo.gl/imzjTp75oiqoPFCE8" target="_blank" rel="noopener">Przeczytaj opinie</a></p>
+    </div>
+  </section>
+
+  <section class="section steps" aria-labelledby="steps-h" data-bg="#0b0b0a">
+    <div class="wrap">
+      <p class="eyebrow">Jak to działa</p>
+      <h2 id="steps-h">Od zapytania do imprezy</h2>
+      <div class="steps__grid">
+        <div class="step js-reveal"><h3>Zapytanie</h3><p>Wypełniacie krótki formularz albo dzwonicie. Wystarczy data, liczba osób i okazja.</p></div>
+        <div class="step js-reveal"><h3>Propozycja</h3><p>Odsyłamy ofertę z kartą i ceną <span class="todo">w ciągu … godzin</span>.</p></div>
+        <div class="step js-reveal"><h3>Potwierdzenie</h3><p>Rezerwujemy termin po wpłacie zaliczki <span class="todo">wysokość zaliczki</span>.</p></div>
+        <div class="step js-reveal"><h3>Wieczór</h3><p>Przychodzicie. Resztą zajmujemy się my.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq" aria-labelledby="faq-h" style="padding-top: 0">
+    <div class="wrap faq__grid">
+      <div>
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-h">Pytania, które zadają firmy</h2>
+      </div>
+      <div>
+        <details><summary>Ile osób się zmieści?</summary><p>W sali do 50 osób. W sezonie dochodzi patio na około 25 osób (do 22:00).</p></details>
+        <details><summary>Czy wystawiacie fakturę VAT?</summary><p><span class="todo">DO UZUPEŁNIENIA</span></p></details>
+        <details><summary>Jak wygląda zaliczka i płatność?</summary><p><span class="todo">DO UZUPEŁNIENIA: wysokość zaliczki, termin, płatność przelewem / kartą</span></p></details>
+        <details><summary>Czy jest jedzenie?</summary><p>Na co dzień mamy przekąski: oliwki, nachosy i inne drobne rzeczy do stolika. <span class="todo">Catering na większe eventy: tak / nie, z kim</span></p></details>
+        <details><summary>Czy na evencie jest obsługa przy stolikach?</summary><p>Na co dzień zamawia się przy barze. <span class="todo">Jak jest na eventach zamkniętych?</span></p></details>
+        <details><summary>Możemy przynieść tort albo dekoracje?</summary><p><span class="todo">DO UZUPEŁNIENIA</span></p></details>
+        <details><summary>Czy lokal jest dostępny dla wózków?</summary><p>Niestety nie, przy wejściu jest próg. Toaleta jest w lokalu.</p></details>
+        <details><summary>Jak szybko trzeba rezerwować grudzień?</summary><p>Im wcześniej, tym lepiej. Piątki i soboty w grudniu znikają jako pierwsze, więc zapytajcie o termin od razu.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="zapytanie" aria-labelledby="contact-h" data-bg="#123a2b">
+    <div class="wrap contact__grid">
+      <div>
+        <p class="eyebrow" style="color: var(--cream); opacity: .75">Zapytanie</p>
+        <h2 id="contact-h">Zarezerwujmy wam termin</h2>
+        <p class="lead" style="margin-top: 1.4rem">Podajcie datę i liczbę osób. Odezwiemy się z propozycją.</p>
+        <div class="contact__direct">
+          <div><span>Telefon</span><a href="tel:+48453433852" data-ev="click_to_call">+48 453 433 852</a></div>
+          <div><span>E-mail</span><b><span class="todo">adres do ofert firmowych</span></b></div>
+          <div><span>Adres</span><b>Mostowa 8, Kraków</b></div>
+        </div>
+      </div>
+      <form id="lead" novalidate>
+        <div class="field"><label for="f-company">Firma</label><input id="f-company" name="firma" autocomplete="organization" placeholder="np. Acme sp. z o.o."></div>
+        <div class="field"><label for="f-name">Imię i nazwisko *</label><input id="f-name" name="imie" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">E-mail *</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">Telefon</label><input id="f-phone" name="telefon" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="f-date">Data</label><input id="f-date" name="data" type="date"></div>
+        <div class="field"><label for="f-people">Liczba osób *</label><input id="f-people" name="osoby" type="number" min="2" max="80" inputmode="numeric" required></div>
+        <fieldset class="field field--full" style="border: 0; padding: 0; margin: 0">
+          <legend style="font-size: .82rem; color: var(--cream); margin-bottom: .5rem">Okazja</legend>
+          <div class="chips">
+            <input type="radio" name="okazja" id="o1" value="Wigilia firmowa" checked><label for="o1">Wigilia firmowa</label>
+            <input type="radio" name="okazja" id="o2" value="Integracja"><label for="o2">Integracja</label>
+            <input type="radio" name="okazja" id="o3" value="Na wyłączność"><label for="o3">Na wyłączność</label>
+            <input type="radio" name="okazja" id="o4" value="Coś innego"><label for="o4">Coś innego</label>
+          </div>
+        </fieldset>
+        <div class="field field--full"><label for="f-msg">Coś jeszcze?</label><textarea id="f-msg" name="wiadomosc" placeholder="Godziny, budżet, pakiet, który was interesuje…"></textarea></div>
+        <p class="error" id="f-error" hidden></p>
+        <div class="form__foot">
+          <small>Wysyłając zapytanie, zgadzacie się na kontakt w sprawie oferty. <span class="todo">link do polityki prywatności</span></small>
+          <button class="btn" type="submit">Wyślij zapytanie</button>
+        </div>
+        <div class="done" id="f-done" hidden>
+          <h3>Zapytanie gotowe</h3>
+          <p style="color: var(--cream)">Wyślij je mailem albo skopiuj i wklej, gdzie wolisz. Szybciej będzie telefonicznie: <b>+48 453 433 852</b>.</p>
+          <pre id="f-summary"></pre>
+          <div class="done__actions">
+            <a class="btn" id="f-mail" href="#">Otwórz w poczcie</a>
+            <button class="btn btn--ghost" type="button" id="f-copy">Kopiuj treść</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <svg class="logo" role="img" aria-label="Bar Gwar" xmlns="http://www.w3.org/2000/svg" viewBox="163 390 754 300" fill="none">
+<path d="M329.701 496.563L221.529 505.143L223.521 537.625L274.466 534.254C277.75 533.593 281.133 533.605 284.412 534.289C287.691 534.974 290.797 536.317 293.542 538.238C296.949 542.292 298.652 547.51 298.291 552.794C298.22 555.886 297.501 558.928 296.181 561.726C294.862 564.523 292.971 567.013 290.63 569.035C283.564 575 275.105 579.084 266.039 580.909C251.642 584.162 236.898 585.629 222.142 585.276C204.062 585.276 191.294 582.109 183.838 575.776C179.756 571.86 176.62 567.064 174.669 561.755C172.718 556.445 172.002 550.76 172.576 545.133C172.615 532.321 176.223 519.773 182.995 508.897C190.738 496.86 200.757 486.45 212.489 478.253C226.713 468.15 242.157 459.888 258.455 453.662C278.016 446.053 298.185 440.108 318.746 435.889L311.468 389.923C291.254 394.703 271.682 401.879 253.169 411.297C235.915 420.005 220.04 431.208 206.054 444.545C192.848 457.034 182.114 471.901 174.415 488.366C166.883 504.826 163.065 522.742 163.23 540.843C162.806 556.068 165.955 571.18 172.423 584.969C178.103 596.678 187.075 606.476 198.24 613.161C210.142 619.883 223.646 623.246 237.311 622.891C250.557 623.359 263.749 620.982 275.998 615.919C285.565 611.904 293.612 604.957 298.981 596.078C304.247 586.934 306.897 576.519 306.642 565.97C306.745 558.142 305.448 550.359 302.811 542.988C301.526 539.51 299.99 536.13 298.215 532.875L332.076 530.194L329.701 496.563Z" fill="currentColor"/>
+<path d="M595.303 454.122L554.318 450.752C545.686 482.774 538.026 510.021 531.335 532.493C524.67 555.016 518.618 573.402 513.332 587.651C509.304 599.052 504.333 610.096 498.47 620.67C495.172 626.867 490.787 632.42 485.523 637.064C482.098 639.988 477.768 641.639 473.266 641.737C470.012 641.727 466.845 640.68 464.226 638.75C461.227 636.429 459.009 633.249 457.867 629.633C456.277 624.214 455.553 618.578 455.722 612.932C456.088 600.975 457.549 589.076 460.089 577.386C462.923 562.447 467.06 544.674 472.5 523.76C477.939 502.846 484.068 479.557 491.192 453.28L449.823 450.292C442.316 483.847 435.293 511.937 428.756 534.562C422.244 557.544 416.269 575.701 410.753 589.797C406.805 601.012 401.668 611.773 395.431 621.896C391.763 627.96 386.855 633.181 381.029 637.217C376.659 639.93 371.616 641.364 366.473 641.354C362.862 641.398 359.31 640.443 356.207 638.596C352.838 636.312 350.288 633.01 348.93 629.173C346.976 623.643 346.067 617.799 346.248 611.936C346.473 605.198 347.819 598.544 350.232 592.248C352.913 584.587 356.131 576.926 360.038 567.427C363.945 557.927 367.699 548.045 372.219 536.783C376.739 525.522 380.799 512.958 385.012 499.245C389.438 484.372 392.867 469.221 395.278 453.893L351.228 450.598C348.623 470.466 346.248 488.775 344.103 505.527C341.958 522.279 340.375 537.294 339.354 550.573C338.204 563.75 337.668 575.164 337.668 584.587C337.352 601.846 339.414 619.066 343.797 635.762C346.662 647.663 352.218 658.749 360.038 668.167C362.722 671.529 366.108 674.265 369.958 676.183C373.808 678.102 378.031 679.157 382.331 679.276C388.724 679.26 395.023 677.738 400.717 674.832C407.622 670.957 413.69 665.749 418.567 659.511C425.752 650.433 431.918 640.594 436.953 630.169C440.86 622.509 444.614 613.392 448.674 603.433C449.67 613.239 450.819 621.972 452.198 629.403C453.829 639.94 456.762 650.233 460.932 660.047C463.285 666.132 467.291 671.439 472.5 675.369C476.472 678.02 481.13 679.458 485.906 679.505C492.736 679.453 499.428 677.575 505.288 674.066C512.962 669.008 519.444 662.342 524.287 654.531C532.31 642.05 539.084 628.809 544.512 615.001C551.56 597.994 559.221 576.365 567.494 550.113C575.768 523.862 585.038 491.865 595.303 454.122Z" fill="currentColor"/>
+<path d="M730.288 418.805C726.867 411.088 721.606 404.328 714.966 399.116C708.967 394.471 701.562 392.011 693.976 392.145C685.716 392.179 677.59 394.231 670.303 398.12C661.298 403.357 653.474 410.399 647.321 418.805C637.935 431.385 629.898 444.917 623.342 459.178C615.069 476.287 606.029 497.788 596.223 523.682C586.417 549.576 575.666 580.858 563.971 617.528L606.259 620.822C611.621 603.202 616.728 587.038 621.58 572.329C626.432 557.62 630.824 544.852 634.757 534.024L701.636 530.117L703.015 497.712C694.906 498.705 686.953 500.712 679.343 503.687C671.076 506.737 663.059 510.425 655.365 514.719C648.946 518.322 642.8 522.394 636.979 526.9C644.64 507.441 651.228 491.277 657.51 478.636C662.555 467.777 668.772 457.502 676.049 447.993C680.565 441.896 686.373 436.874 693.056 433.284C698.296 430.687 704.062 429.324 709.91 429.3C714.364 429.144 718.78 430.175 722.704 432.288C726.333 434.546 729.15 437.899 730.748 441.864C732.948 447.442 733.966 453.416 733.736 459.407C733.586 466.006 732.424 472.543 730.288 478.789C727.99 485.888 725.002 493.932 721.325 502.921C717.724 511.884 713.664 521.92 709.451 533.565C705.237 545.209 700.947 557.467 696.887 571.869C692.513 587.134 689.135 602.668 686.774 618.371L730.748 621.665C733.199 601.593 735.242 583.514 736.877 567.426C738.562 551.261 739.864 536.782 740.86 523.529C741.856 510.276 742.392 498.325 742.392 487.293C742.439 474.763 741.388 462.254 739.251 449.908C737.625 439.195 734.612 428.74 730.288 418.805Z" fill="currentColor"/>
+<path d="M869.563 606.956C858.935 602.772 849.053 596.9 840.298 589.566C833.544 583.824 827.477 577.32 822.218 570.184C836.914 565.215 851.059 558.745 864.43 550.879C874.486 545.152 882.861 536.883 888.715 526.9C893.369 517.403 894.923 506.684 893.158 496.257C890.477 476.185 883.122 461.936 871.171 453.662C857.501 445.053 841.061 441.984 825.206 445.082C817.337 446.079 809.619 448.034 802.223 450.904C795.111 453.81 788.767 458.319 783.684 464.081C777.361 471.599 772.432 480.187 769.128 489.438C764.215 503.03 760.749 517.102 758.786 531.42C756.08 548.58 753.934 569.699 752.351 594.775C750.768 619.852 749.798 649.449 749.44 683.565L792.035 680.501C792.035 649.857 792.647 623.963 793.643 602.436C794.639 580.909 795.942 563.059 797.704 548.81C798.922 537.098 801.256 525.528 804.675 514.26C806.766 507.176 810.171 500.55 814.711 494.724C818.269 490.576 822.871 487.455 828.041 485.685C833.639 483.914 839.381 482.633 845.201 481.854C852.072 480.69 859.091 480.69 865.962 481.854C871.275 482.74 876.25 485.043 880.365 488.519C883.969 491.633 886.289 495.973 886.876 500.7C887.417 504.478 886.968 508.332 885.574 511.885C883.402 516.227 879.989 519.827 875.768 522.227C868.508 526.687 860.806 530.384 852.785 533.259C842.443 537.242 828.424 541.762 810.88 546.818C813.676 566.606 819.679 585.806 828.654 603.662C836.45 618.996 847.449 632.477 860.906 643.192C874.522 653.687 890.177 661.228 906.871 665.332L910.625 616.762C896.577 615.249 882.778 611.954 869.563 606.956Z" fill="currentColor"/>
+</svg>
+    <p style="margin: 0">Bar Gwar · Mostowa 8, 31-061 Kraków · <a href="tel:+48453433852">+48 453 433 852</a></p>
+    <p style="margin: 0"><a href="https://bar.gwar.bar/" target="_blank" rel="noopener">bar.gwar.bar</a></p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="btn" href="#zapytanie">Zapytaj o termin</a>
+  <a class="btn btn--ghost" href="tel:+48453433852" aria-label="Zadzwoń">Zadzwoń</a>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/SplitText.min.js"></script>
+<script>
+(() => {
+  // Adres, na który trafiają zapytania z formularza (mailto). DO UZUPEŁNIENIA.
+  const LEAD_EMAIL = '';
+
+  /* Header: solid after leaving the hero */
+  const top = document.getElementById('top');
+  const onScroll = () => top.classList.toggle('is-solid', window.scrollY > 40);
+  onScroll();
+  addEventListener('scroll', onScroll, { passive: true });
+
+  /* Preselect occasion when a package button is used */
+  document.querySelectorAll('[data-pack]').forEach((a) => a.addEventListener('click', () => {
+    const msg = document.getElementById('f-msg');
+    if (!msg.value) msg.value = `Interesuje nas pakiet: ${a.dataset.pack}. `;
+  }));
+
+  /* Lead form: validate, then build a ready-to-send message (no backend yet) */
+  const form = document.getElementById('lead');
+  const err = document.getElementById('f-error');
+  const done = document.getElementById('f-done');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const missing = [...form.querySelectorAll('[required]')].filter((el) => !el.checkValidity());
+    if (missing.length) {
+      err.textContent = `Uzupełnij: ${missing.map((el) => form.querySelector(`label[for="${el.id}"]`).textContent.replace(' *', '')).join(', ')}.`;
+      err.hidden = false;
+      missing[0].focus();
+      return;
+    }
+    err.hidden = true;
+    const d = new FormData(form);
+    const lines = [
+      `Okazja: ${d.get('okazja')}`,
+      `Data: ${d.get('data') || 'do ustalenia'}`,
+      `Liczba osób: ${d.get('osoby')}`,
+      `Firma: ${d.get('firma') || '–'}`,
+      `Kontakt: ${d.get('imie')}, ${d.get('email')}${d.get('telefon') ? ', ' + d.get('telefon') : ''}`,
+    ];
+    if (d.get('wiadomosc')) lines.push('', d.get('wiadomosc'));
+    const text = lines.join('\n');
+    document.getElementById('f-summary').textContent = text;
+    const subject = `Zapytanie firmowe: ${d.get('okazja')}, ${d.get('osoby')} os.`;
+    document.getElementById('f-mail').href = `mailto:${LEAD_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    done.hidden = false;
+    window.dataLayer && window.dataLayer.push({ event: 'generate_lead', okazja: d.get('okazja'), osoby: d.get('osoby') });
+    done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+  document.getElementById('f-copy').addEventListener('click', async (e) => {
+    const pre = document.getElementById('f-summary');
+    try { await navigator.clipboard.writeText(pre.textContent); e.target.textContent = 'Skopiowano'; }
+    catch { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); e.target.textContent = 'Zaznaczono – skopiuj Ctrl+C'; }
+  });
+
+  /* Motion */
+  if (!window.gsap) return;
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  // Mobile Safari: don't recalculate every trigger when the address bar shows/hides
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  const mm = gsap.matchMedia();
+  const cssReveals = window.CSS && CSS.supports('animation-timeline: view()');
+
+  // Colour wash: each section hands its colour to <body> while it is in the middle of the screen
+  document.documentElement.classList.add('wash');
+  gsap.utils.toArray('[data-bg]').forEach((sec) => {
+    ScrollTrigger.create({
+      trigger: sec, start: 'top 55%', end: 'bottom 55%',
+      onToggle: (self) => self.isActive && gsap.to(document.body, { backgroundColor: sec.dataset.bg, duration: .6, ease: 'power2.out', overwrite: 'auto' }),
+    });
+  });
+
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+    // Hero headline: letters rise out of a mask
+    document.fonts.ready.then(() => {
+      SplitText.create('.js-split', {
+        type: 'chars,words', mask: 'chars', autoSplit: true,
+        onSplit: (self) => gsap.from(self.chars, { yPercent: 115, duration: 1, ease: 'expo.out', stagger: 0.028 }),
+      });
+    });
+    gsap.from('.js-arch', { clipPath: 'inset(100% 0 0 0 round 999px 999px 10px 10px)', duration: 1.4, ease: 'expo.inOut', delay: .2 });
+    gsap.from('.js-badge', { scale: 0, rotate: -90, duration: .9, ease: 'back.out(1.8)', delay: 1.1 });
+    gsap.from('.hero__sub, .hero__ctas', { y: 24, duration: .9, ease: 'power3.out', stagger: .1, delay: .5 });
+
+    // Marquee
+    gsap.to('.js-marquee', { xPercent: -50, duration: 28, ease: 'none', repeat: -1 });
+
+    // Count-up in the proof row
+    document.querySelectorAll('.js-count').forEach((el) => {
+      const to = parseFloat(el.dataset.to), dec = +(el.dataset.dec || 0);
+      const fmt = (v) => v.toLocaleString('pl-PL', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+      const o = { v: 0 };
+      gsap.to(o, { v: to, duration: 1.6, ease: 'power2.out', delay: .6, onUpdate: () => { el.textContent = fmt(o.v); } });
+    });
+
+    // 1. Mirror: a small round mirror grows until the room fills the screen
+    const stage = document.querySelector('.js-mirror');
+    const img = stage.querySelector('.mirror__img'), ring = stage.querySelector('.mirror__ring');
+    const r0 = () => Math.min(innerWidth, innerHeight) * .2;
+    const r1 = () => Math.hypot(innerWidth, innerHeight) / 2 + 10;
+    const mirror = { r: r0() };
+    const paint = () => {
+      img.style.clipPath = `circle(${mirror.r}px at 50% 50%)`;
+      ring.style.width = ring.style.height = `${mirror.r * 2 + 18}px`;
+    };
+    gsap.timeline({
+      scrollTrigger: { trigger: stage, start: 'top top', end: '+=130%', pin: true, scrub: .6, invalidateOnRefresh: true },
+    })
+      .fromTo(mirror, { r: r0 }, { r: r1, ease: 'power2.in', duration: 1, onUpdate: paint }, 0)
+      .fromTo(img.firstElementChild, { scale: 1.35 }, { scale: 1, ease: 'none', duration: 1 }, 0)
+      .fromTo(ring, { opacity: 1 }, { opacity: 0, duration: .35 }, .55)
+      .fromTo('.mirror__text', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .3 }, .7);
+    paint();
+
+    // 2. Pour: 48 frames drawn on a canvas, driven by the scroll position
+    const pour = document.querySelector('.js-pour');
+    const canvas = pour.querySelector('canvas'), ctx = canvas.getContext('2d');
+    const frames = Array.from({ length: 48 }, (_, i) => { const im = new Image(); im.decoding = 'async'; im.src = `media/pour/${String(i + 1).padStart(2, '0')}.webp`; return im; });
+    let current = 0;
+    const draw = (i) => {
+      const im = frames[i]; if (!im.complete || !im.naturalWidth) return;
+      const w = canvas.clientWidth, h = canvas.clientHeight, dpr = Math.min(devicePixelRatio || 1, 2);
+      if (canvas.width !== Math.round(w * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); }
+      const s = Math.max(canvas.width / im.naturalWidth, canvas.height / im.naturalHeight);
+      const dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+      ctx.drawImage(im, (canvas.width - dw) / 2, (canvas.height - dh) / 2, dw, dh);
+    };
+    frames[0].onload = () => draw(current);
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: pour, start: 'top top', end: '+=160%', pin: true, scrub: true,
+        onUpdate: (self) => { const i = Math.round(self.progress * 47); if (i !== current) { current = i; draw(i); } },
+        onRefresh: () => draw(current),
+      },
+    }).from('.pour__lines p', { y: 30, opacity: .2, stagger: .25, duration: .5 });
+
+    // 3. Cocktail stack: each card slides over the previous one, which shrinks into the deck
+    const cards = gsap.utils.toArray('.js-stack .drink');
+    cards.forEach((card, i) => {
+      const next = cards[i + 1]; if (!next) return;
+      gsap.timeline({ scrollTrigger: { trigger: next, start: 'top bottom', end: 'top 25%', scrub: true } })
+        .to(card, { scale: .9 - (cards.length - i) * .01, ease: 'none' }, 0)
+        .to(card.querySelector('.drink__shade'), { opacity: .55, ease: 'none' }, 0);
+    });
+
+    // Reveals: native CSS view() where supported, GSAP otherwise
+    if (!cssReveals) {
+      gsap.utils.toArray('.js-reveal').forEach((el) => {
+        gsap.from(el, { y: 50, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
+      });
+    }
+    gsap.utils.toArray('.why__item img, .gallery img').forEach((im) => {
+      gsap.fromTo(im, { yPercent: -8 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: im.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+    });
+  });
+
+  // Formats: pinned horizontal scroll on wide screens
+  mm.add('(min-width: 900px) and (prefers-reduced-motion: no-preference)', () => {
+    const trackEl = document.querySelector('.js-track');
+    const dist = () => Math.max(0, trackEl.scrollWidth - document.documentElement.clientWidth);
+    gsap.to(trackEl, {
+      x: () => -dist(), ease: 'none',
+      scrollTrigger: { trigger: '.js-pin', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: 1, invalidateOnRefresh: true },
+    });
+  });
+  // Without the pin (reduced motion), let the row scroll inside itself on wide screens
+  mm.add('(min-width: 900px) and (prefers-reduced-motion: reduce)', () => {
+    document.querySelector('.js-track').parentElement.style.overflowX = 'auto';
+  });
+})();
+</script>
+</body>
+</html>
