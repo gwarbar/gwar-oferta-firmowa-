@@ -13,6 +13,9 @@ ta strona jest od niego niezależna, ma `noindex` i nie jest podpinana pod Googl
   (fallback GSAP); `ScrollTrigger.config({ ignoreMobileResize: true })` przeciw skokom paska adresu w Safari
 - `media/` – zdjęcia z sesji (Drive „photo”) w WebP 800/1600 px, `bar-loop.mp4` – 4 klipy z barmanem (Drive „video”)
 - krój Jean-Luc i kolory marki jak na landingu; logotyp z `logo.svg` (maska CSS, także w finale)
+- intro przy pierwszym wejściu: promienie G (`g-top`, wstawione inline) wystrzeliwują i odlatują do logo w nagłówku
+  (flaga `gwar-intro` w localStorage, pomijane przy „ogranicz ruch”); szklanka w rogu jako pasek postępu scrolla;
+  przyciski napełniają się od dołu po najechaniu
 - `brand/` – znaki G z „Gwar-G.ai” (`g-left`, `g-top`, `g-right`, `g-bottom`) i kontur naklejki G z dłonią (`g-sticker.svg`,
   rysowany scrollem w różowej sekcji); G-rozbłysk (`g-top`) jako separator w pasku haseł
 

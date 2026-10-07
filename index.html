@@ -81,20 +81,50 @@ h3 { font-size: var(--step-2); }
 .todo { background: #ffe066; color: #000; padding: 0 .3em; border-radius: 3px; font-family: var(--font-body); text-transform: none; font-size: .85em; letter-spacing: 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* Buttons */
+/* Buttons: on hover they fill from the bottom like a glass, with a curved surface */
 .btn {
+  --fill: #b01c48;
+  position: relative; overflow: hidden; isolation: isolate;
   display: inline-flex; align-items: center; gap: .5em;
   padding: .95em 1.6em;
   border-radius: var(--pill);
   font-weight: 700; text-decoration: none; font-size: 1rem;
   border: 2px solid var(--pink);
   background: var(--pink); color: #fff;
-  transition: background .2s, color .2s, transform .2s;
+  transition: color .35s, border-color .35s, transform .2s;
   cursor: pointer; font-family: var(--font-body);
 }
-.btn:hover { background: #b01c48; border-color: #b01c48; color: #fff; transform: translateY(-2px); }
-.btn--ghost { background: transparent; border-color: var(--line); color: var(--cream); }
-.btn--ghost:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+.btn::before {
+  content: ''; position: absolute; z-index: -1; left: -15%; right: -15%; top: 0; height: 160%;
+  background: var(--fill); border-radius: 50% 50% 0 0 / 22% 22% 0 0;
+  transform: translateY(102%); transition: transform .6s cubic-bezier(.2, .7, .2, 1);
+}
+.btn:hover::before, .btn:focus-visible::before { transform: translateY(-18%); }
+.btn:hover { border-color: var(--fill); color: #fff; transform: translateY(-2px); }
+.btn--ghost { --fill: var(--cream); background: transparent; border-color: var(--line); color: var(--cream); }
+.btn--ghost:hover { color: var(--ink); }
+
+/* Intro: the radiating G bursts open once per visitor, then shrinks into the header logo */
+.intro { display: none; }
+html.intro-on .intro {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: var(--ink); color: var(--pink);
+  animation: intro-safety 0s 4s forwards; /* never block the page if the script fails */
+}
+html.intro-on { overflow: hidden; }
+.intro svg { width: min(46vw, 240px); height: auto; overflow: visible; }
+@keyframes intro-safety { to { visibility: hidden; pointer-events: none; } }
+
+/* Scroll progress: a coupe that fills as you go down the page */
+.glass {
+  position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 45;
+  display: flex; align-items: center; gap: .6rem; pointer-events: none;
+}
+.glass__cup { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: rgba(11, 11, 10, .55); backdrop-filter: blur(6px); }
+.glass svg { width: 30px; height: 40px; overflow: visible; }
+.glass__liquid { fill: var(--pink); transition: fill .4s; }
+html.on-pink .glass__liquid { fill: var(--cream); }
+.glass__toast { font-family: var(--font-display); text-transform: uppercase; font-size: 1.1rem; color: var(--cream); background: rgba(11, 11, 10, .55); padding: .45em .8em; border-radius: var(--pill); opacity: 0; transform: translateX(10px); transition: opacity .4s, transform .4s; }
+.glass.is-full .glass__toast { opacity: 1; transform: none; }
 
 /* Header */
 .top {
@@ -414,6 +444,30 @@ textarea { min-height: 7rem; resize: vertical; }
 </style>
 </head>
 <body>
+<script>
+  // First visit only, and not for people who asked for less motion: show the G intro
+  try {
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !localStorage.getItem('gwar-intro')) document.documentElement.classList.add('intro-on');
+  } catch (e) {}
+  // Safety net: never leave the page locked if something goes wrong
+  setTimeout(() => document.documentElement.classList.remove('intro-on'), 3500);
+</script>
+<div class="intro" aria-hidden="true">
+  <svg viewBox="357 127 121 117">
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 412.003906 167.535156 L 400.648438 130.632812 L 390.207031 134.125 L 405.488281 170.007812 Z M 412.003906 167.535156 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 402.824219 171.859375 L 371.765625 144.65625 L 364.324219 153.117188 L 398.585938 176.640625 Z M 402.824219 171.859375 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 420.816406 168.40625 L 430.894531 138.246094 L 420.191406 135.886719 L 414.632812 167.65625 Z M 420.816406 168.40625 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 369.132812 172.367188 L 367.355469 183.394531 L 396.210938 184.390625 L 397.539062 178.996094 Z M 369.132812 172.367188 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 427.105469 172.421875 L 456.285156 144.441406 L 447.824219 136.910156 L 423.144531 169.6875 Z M 427.105469 172.421875 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 432.320312 192.050781 L 429.695312 197.046875 L 454.40625 209.710938 L 458.699219 199.386719 Z M 432.320312 192.050781 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 423.210938 202.574219 L 443.242188 232.039062 L 451.90625 225.234375 L 428.460938 198.949219 Z M 423.210938 202.574219 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 396.175781 187.769531 L 361.300781 196.5 L 364.695312 206.945312 L 397.863281 194.625 Z M 396.175781 187.769531 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 414.292969 204.691406 L 417.601562 240.746094 L 427.953125 239.285156 L 421.136719 203.863281 Z M 414.292969 204.691406 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 405.683594 202.375 L 395.761719 227.644531 L 405.898438 230.394531 L 411.09375 204.425781 Z M 405.683594 202.375 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 398.980469 196.113281 L 370.371094 226.394531 L 378.589844 232.792969 L 403.066406 200.722656 Z M 398.980469 196.113281 "/>
+    <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 474.367188 178.683594 L 421.015625 184.320312 L 421.34375 189.042969 L 475.074219 188.851562 Z M 474.367188 178.683594 "/>
+  </svg>
+</div>
 
 <header class="top" id="top">
   <div class="wrap top__in">
@@ -774,6 +828,17 @@ textarea { min-height: 7rem; resize: vertical; }
   </div>
 </footer>
 
+<div class="glass" aria-hidden="true">
+  <span class="glass__toast">Na zdrowie!</span>
+  <span class="glass__cup">
+    <svg viewBox="0 0 40 52">
+      <defs><clipPath id="bowl"><path d="M3 8H37C37 20 30 26 20 26C10 26 3 20 3 8Z"/></clipPath></defs>
+      <rect class="glass__liquid js-liquid" x="0" y="26" width="40" height="0" clip-path="url(#bowl)"/>
+      <path d="M3 8H37C37 20 30 26 20 26C10 26 3 20 3 8ZM20 26V45M12 48Q20 44 28 48" fill="none" stroke="#E2E1D8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+</div>
+
 <script src="vendor/gsap.min.js"></script>
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script src="vendor/SplitText.min.js"></script>
@@ -832,24 +897,41 @@ textarea { min-height: 7rem; resize: vertical; }
   });
 
   /* Motion */
-  if (!window.gsap) return;
+  const root = document.documentElement;
+  if (!window.gsap) { root.classList.remove('intro-on'); return; }
   gsap.registerPlugin(ScrollTrigger, SplitText);
   // Mobile Safari: don't recalculate every trigger when the address bar shows/hides
   ScrollTrigger.config({ ignoreMobileResize: true });
   const mm = gsap.matchMedia();
   const cssReveals = window.CSS && CSS.supports('animation-timeline: view()');
 
+  // Intro: rays burst out of the centre, the G turns into place, then shrinks into the header logo
+  const introOn = root.classList.contains('intro-on');
+  const heroDelay = introOn ? 1.35 : 0;
+  if (introOn) {
+    try { localStorage.setItem('gwar-intro', '1'); } catch (e) {}
+    const intro = document.querySelector('.intro'), mark = intro.querySelector('svg');
+    const target = document.querySelector('.top__logo .logo').getBoundingClientRect();
+    const m = mark.getBoundingClientRect();
+    const tx = target.left + target.width / 2, ty = target.top + target.height / 2;
+    gsap.timeline({ onComplete: () => { root.classList.remove('intro-on'); intro.remove(); ScrollTrigger.refresh(); } })
+      .from(mark.querySelectorAll('path'), { scale: 0, opacity: 0, svgOrigin: '417.5 185.5', duration: .55, ease: 'back.out(2)', stagger: { each: .035, from: 'random' } })
+      .from(mark, { rotate: -120, duration: .9, ease: 'power3.out' }, 0)
+      .to(mark, { x: tx - (m.left + m.width / 2), y: ty - (m.top + m.height / 2), scale: target.height / m.height, opacity: 0, duration: .5, ease: 'power3.in' }, .85)
+      .fromTo(intro, { clipPath: `circle(150% at ${tx}px ${ty}px)` }, { clipPath: `circle(0% at ${tx}px ${ty}px)`, duration: .55, ease: 'power3.in' }, .9);
+  }
+
   mm.add('(prefers-reduced-motion: no-preference)', () => {
     // Hero headline: letters rise out of a mask
     document.fonts.ready.then(() => {
       SplitText.create('.js-split', {
         type: 'chars,words', mask: 'chars', autoSplit: true,
-        onSplit: (self) => gsap.from(self.chars, { yPercent: 115, duration: 1, ease: 'expo.out', stagger: 0.028 }),
+        onSplit: (self) => gsap.from(self.chars, { yPercent: 115, duration: 1, ease: 'expo.out', stagger: 0.028, delay: heroDelay }),
       });
     });
-    gsap.from('.js-arch', { clipPath: 'inset(100% 0 0 0 round 999px 999px 10px 10px)', duration: 1.4, ease: 'expo.inOut', delay: .2 });
-    gsap.from('.js-badge', { scale: 0, rotate: -90, duration: .9, ease: 'back.out(1.8)', delay: 1.1 });
-    gsap.from('.hero__sub, .hero__ctas', { y: 24, duration: .9, ease: 'power3.out', stagger: .1, delay: .5 });
+    gsap.from('.js-arch', { clipPath: 'inset(100% 0 0 0 round 999px 999px 10px 10px)', duration: 1.4, ease: 'expo.inOut', delay: .2 + heroDelay });
+    gsap.from('.js-badge', { scale: 0, rotate: -90, duration: .9, ease: 'back.out(1.8)', delay: 1.1 + heroDelay });
+    gsap.from('.hero__sub, .hero__ctas', { y: 24, duration: .9, ease: 'power3.out', stagger: .1, delay: .5 + heroDelay });
 
     // Marquee
     gsap.to('.js-marquee', { xPercent: -50, duration: 28, ease: 'none', repeat: -1 });
@@ -859,7 +941,7 @@ textarea { min-height: 7rem; resize: vertical; }
       const to = parseFloat(el.dataset.to), dec = +(el.dataset.dec || 0);
       const fmt = (v) => v.toLocaleString('pl-PL', { minimumFractionDigits: dec, maximumFractionDigits: dec });
       const o = { v: 0 };
-      gsap.to(o, { v: to, duration: 1.6, ease: 'power2.out', delay: .6, onUpdate: () => { el.textContent = fmt(o.v); } });
+      gsap.to(o, { v: to, duration: 1.6, ease: 'power2.out', delay: .6 + heroDelay, onUpdate: () => { el.textContent = fmt(o.v); } });
     });
 
     // 1. Mirror: a small round mirror grows until the room fills the screen
@@ -983,6 +1065,18 @@ textarea { min-height: 7rem; resize: vertical; }
       scrollTrigger: { trigger: sec, start: 'top 85%', end: 'top 30%', scrub: true },
     });
   });
+  // Scroll progress glass: liquid level follows the whole page; cream liquid on the pink section
+  const liquid = document.querySelector('.js-liquid'), glass = document.querySelector('.glass');
+  ScrollTrigger.create({
+    start: 0, end: 'max',
+    onUpdate: (self) => {
+      const lvl = 18 * self.progress;
+      liquid.setAttribute('y', 26 - lvl); liquid.setAttribute('height', lvl + .5);
+      glass.classList.toggle('is-full', self.progress > .985);
+    },
+  });
+  ScrollTrigger.create({ trigger: '.quote', start: 'top 50%', end: 'bottom 50%', toggleClass: { targets: root, className: 'on-pink' } });
+
   // Pins were created out of page order (the desktop formats pin sits above the finale): recalculate top to bottom
   ScrollTrigger.sort();
   ScrollTrigger.refresh();
