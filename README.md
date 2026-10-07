@@ -12,7 +12,9 @@ ta strona jest od niego niezależna, ma `noindex` i nie jest podpinana pod Googl
   stos kart koktajli (sticky + GSAP), płynna zmiana koloru tła między sekcjami, reveal'e w CSS `animation-timeline: view()`
   (fallback GSAP); `ScrollTrigger.config({ ignoreMobileResize: true })` przeciw skokom paska adresu w Safari
 - `media/` – zdjęcia z sesji (Drive „photo”) w WebP 800/1600 px, `bar-loop.mp4` – 4 klipy z barmanem (Drive „video”)
-- krój Jean-Luc i kolory marki jak na landingu; logo wstawione inline (kolor `--cream`)
+- krój Jean-Luc i kolory marki jak na landingu; logotyp z `logo.svg` (maska CSS, także w finale)
+- `brand/` – znaki G z „Gwar-G.ai” (`g-left`, `g-top`, `g-right`, `g-bottom`) i kontur naklejki G z dłonią (`g-sticker.svg`,
+  rysowany scrollem w różowej sekcji); G-rozbłysk (`g-top`) jako separator w pasku haseł
 
 Podgląd lokalnie: `python3 -m http.server 8090` → http://localhost:8090/
 

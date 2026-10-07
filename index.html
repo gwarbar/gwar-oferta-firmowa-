@@ -151,7 +151,12 @@ h3 { font-size: var(--step-2); }
 /* Marquee */
 .marquee { border-block: 1px solid var(--line); overflow: hidden; padding-block: 1.1rem; background: var(--ink); }
 .marquee__track { display: flex; width: max-content; gap: 2.5rem; font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.6rem, 4vw, 2.8rem); color: var(--cream); white-space: nowrap; }
-.marquee__track span::after { content: '✱'; color: var(--pink); margin-left: 2.5rem; font-size: .6em; vertical-align: middle; }
+.marquee__track span::after {
+  content: ''; display: inline-block; width: .85em; height: .85em; margin-left: 2.5rem; vertical-align: -.05em;
+  background: var(--pink); -webkit-mask: url('brand/g-top.svg') center / contain no-repeat; mask: url('brand/g-top.svg') center / contain no-repeat;
+  animation: g-spin 8s linear infinite;
+}
+@keyframes g-spin { to { transform: rotate(360deg); } }
 
 /* Why */
 .section { padding-block: clamp(4rem, 10vw, 8rem); }
@@ -259,15 +264,21 @@ h3 { font-size: var(--step-2); }
 /* Finale: the bar loop seen through the letters of GWAR, then full screen */
 .finale__stage { position: relative; height: 100svh; min-height: 520px; overflow: hidden; display: grid; place-items: center; background: var(--ink); }
 .finale__stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Black layer with the GWAR logotype cut out of it: the video shows through the letters */
 .finale__mask {
-  position: absolute; inset: 0; display: grid; place-items: center;
-  background: #000; color: #fff; mix-blend-mode: multiply;
-  font-family: var(--font-display); text-transform: uppercase; line-height: .8;
-  font-size: clamp(7rem, 36vw, 34rem); letter-spacing: -.02em;
+  position: absolute; inset: -2px; background: var(--ink);
+  -webkit-mask: url('logo.svg') center / min(84vw, 980px) auto no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: url('logo.svg') center / min(84vw, 980px) auto no-repeat exclude, linear-gradient(#000 0 0);
   transform-origin: 50% 50%; will-change: transform;
 }
-.finale__outline { background: transparent; color: transparent; mix-blend-mode: normal; -webkit-text-stroke: 2px rgba(226, 225, 216, .55); }
 .finale__stage video { filter: brightness(1.7) saturate(1.15); }
+/* Cream glow in the shape of the logotype, so the letters read even on dark frames */
+.finale__tint {
+  position: absolute; inset: -2px; background: var(--cream); opacity: .28; mix-blend-mode: screen;
+  -webkit-mask: url('logo.svg') center / min(84vw, 980px) auto no-repeat; mask: url('logo.svg') center / min(84vw, 980px) auto no-repeat;
+  transform-origin: 50% 50%; will-change: transform;
+}
 .finale__cta { position: relative; z-index: 1; text-align: center; padding-inline: var(--gutter); display: grid; gap: 1.4rem; justify-items: center; }
 .finale__cta h2 { font-size: var(--step-3); text-shadow: 0 2px 30px rgba(0,0,0,.7); }
 .finale__shade { position: absolute; inset: 0; background: linear-gradient(rgba(11,11,10,.2), rgba(11,11,10,.7)); }
@@ -338,7 +349,10 @@ html.wash .marquee, html.wash .formats, html.wash .space, html.wash .quote, html
 @media (max-width: 520px) { .steps__grid { grid-template-columns: 1fr; } }
 
 /* Review band */
-.quote { background: var(--pink); color: #fff; text-align: center; }
+.quote { background: var(--pink); color: #fff; text-align: center; position: relative; overflow: hidden; min-height: 130svh; display: grid; place-items: center; }
+.quote .wrap { position: relative; z-index: 1; }
+.quote__g { position: absolute; inset: 6svh 0; display: grid; place-items: center; color: rgba(255, 255, 255, .6); pointer-events: none; }
+.quote__g svg { height: 100%; max-width: 92vw; }
 .quote__stars { font-size: 1.6rem; letter-spacing: .2em; }
 .quote__big { font-family: var(--font-display); text-transform: uppercase; font-size: var(--step-3); line-height: .95; margin: 1rem auto; max-width: 16ch; }
 .quote p { max-width: 50ch; margin-inline: auto; }
@@ -650,6 +664,7 @@ textarea { min-height: 7rem; resize: vertical; }
   </section>
 
   <section class="quote section" aria-label="Opinie w Google" data-bg="#DA3365">
+    <div class="quote__g js-quote-g" aria-hidden="true"></div>
     <div class="wrap">
       <p class="quote__stars" aria-hidden="true">★★★★★</p>
       <p class="quote__big">4,9 z 1 153 opinii</p>
@@ -693,8 +708,8 @@ textarea { min-height: 7rem; resize: vertical; }
     <div class="finale__stage js-finale">
       <video muted loop playsinline preload="none" poster="media/bar-loop-poster.webp" aria-hidden="true"><source src="media/bar-loop.mp4" type="video/mp4"></video>
       <div class="finale__shade js-finale-shade" aria-hidden="true"></div>
-      <div class="finale__mask js-finale-mask" aria-hidden="true">Gwar</div>
-      <div class="finale__mask finale__outline js-finale-mask" aria-hidden="true">Gwar</div>
+      <div class="finale__tint js-finale-mask" aria-hidden="true"></div>
+      <div class="finale__mask js-finale-mask" aria-hidden="true"></div>
       <div class="finale__cta js-finale-cta">
         <h2 id="finale-h">Do zobaczenia przy barze</h2>
         <a class="btn" href="#zapytanie">Zapytaj o termin</a>
@@ -913,6 +928,14 @@ textarea { min-height: 7rem; resize: vertical; }
       .from('.js-finale-shade', { opacity: 0, duration: .3 }, .7)
       .from('.js-finale-cta', { opacity: 0, y: 40, duration: .3 }, .75);
 
+    // 6. The G sticker draws itself across the pink section
+    fetch('brand/g-sticker.svg').then((r) => r.text()).then((svg) => {
+      const host = document.querySelector('.js-quote-g'); host.innerHTML = svg;
+      const paths = host.querySelectorAll('path');
+      paths.forEach((p) => { const len = p.getTotalLength(); p.style.strokeDasharray = len; p.style.strokeDashoffset = len; });
+      gsap.to(paths, { strokeDashoffset: 0, ease: 'none', stagger: .12, scrollTrigger: { trigger: '.quote', start: 'top 80%', end: 'bottom 65%', scrub: true } });
+    }).catch(() => {});
+
     // 3. Cocktail stack: each card slides over the previous one, which shrinks into the deck
     const cards = gsap.utils.toArray('.js-stack .drink');
     cards.forEach((card, i) => {
@@ -948,7 +971,7 @@ textarea { min-height: 7rem; resize: vertical; }
   });
   // Created after the pinned sections so their start/end include the pin spacing
   // Colour wash: <body> blends from one section's colour to the next, driven by the scroll itself.
-  // The blend runs while the next section travels from the bottom of the screen to 20% from the top.
+  // The blend runs while the next section travels from 85% to 30% of the screen height.
   document.documentElement.classList.add('wash');
   const washed = gsap.utils.toArray('[data-bg]');
   gsap.set(document.body, { backgroundColor: washed[0].dataset.bg });
@@ -957,7 +980,7 @@ textarea { min-height: 7rem; resize: vertical; }
     if (!i || from === to) return;
     gsap.fromTo(document.body, { backgroundColor: from }, {
       backgroundColor: to, ease: 'none', immediateRender: false,
-      scrollTrigger: { trigger: sec, start: 'top bottom', end: 'top 20%', scrub: true },
+      scrollTrigger: { trigger: sec, start: 'top 85%', end: 'top 30%', scrub: true },
     });
   });
   // Pins were created out of page order (the desktop formats pin sits above the finale): recalculate top to bottom
