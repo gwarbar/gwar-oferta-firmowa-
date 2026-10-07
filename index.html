@@ -388,7 +388,7 @@ html.wash .marquee, html.wash .space, html.wash .quote, html.wash .contact { bac
 .quote__art { height: min(78svh, 700px); display: grid; place-items: center; }
 .quote__g { height: 100%; width: 100%; display: grid; place-items: center; color: var(--cream); }
 .quote__g svg { height: 100%; width: auto; max-width: 100%; overflow: visible; }
-.quote__g path { stroke: var(--cream); }
+.quote__g path { stroke: var(--cream); fill: none !important; } /* always a line drawing, even if an old cached file had a fill */
 @media (max-width: 860px) {
   .quote__grid { grid-template-columns: 1fr; }
   .quote__art { position: static; order: -1; height: auto; }
@@ -920,7 +920,7 @@ textarea { min-height: 7rem; resize: vertical; }
   const cssReveals = window.CSS && CSS.supports('animation-timeline: view()');
 
   // G sticker for the reviews section (shown filled even without motion)
-  const stickerReady = fetch('brand/g-sticker.svg').then((r) => r.text()).then((svg) => {
+  const stickerReady = fetch('brand/g-sticker.svg?v=line').then((r) => r.text()).then((svg) => {
     const host = document.querySelector('.js-quote-g'); host.innerHTML = svg;
     return host.querySelectorAll('path');
   }).catch(() => null);
