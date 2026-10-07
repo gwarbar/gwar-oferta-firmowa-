@@ -25,8 +25,6 @@ Podgląd lokalnie: `python3 -m http.server 8090` → http://localhost:8090/
 
 ## Publikacja
 
-Workflow `.github/workflows/pages.yml` publikuje na GitHub Pages przy każdym pushu do `main`. Jednorazowo:
-
-1. Repo → *Settings → Pages → Source: GitHub Actions*. GitHub Pages na darmowym planie działa tylko dla repo publicznych.
-2. DNS u rejestratora gwar.bar: `CNAME ofertafirmowa → gwarbar.github.io`.
-3. Po propagacji DNS: *Settings → Pages → Custom domain* `ofertafirmowa.gwar.bar` (plik `CNAME` już jest) i *Enforce HTTPS*.
+GitHub Pages: *Settings → Pages → Deploy from a branch*, `main` / `(root)`. Każdy push do `main` publikuje stronę
+(plik `.nojekyll` wyłącza Jekylla). Domena: plik `CNAME` + rekord DNS `CNAME ofertafirmowa → gwarbar.github.io`.
+Po wydaniu certyfikatu włączyć *Enforce HTTPS*.
