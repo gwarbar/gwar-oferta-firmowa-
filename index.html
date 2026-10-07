@@ -1034,11 +1034,15 @@ textarea { min-height: 7rem; resize: vertical; }
       scrollTrigger: { trigger: '.quote', start: 'top 95%', end: wide ? 'top 0%' : 'top 15%', scrub: true },
     });
 
-    // 6. The G sticker draws itself in cream lines across the whole pink section
+    // 6. The G sticker, boomerang: it draws itself during the first half of the pink section,
+    //    then the line runs back the same way and erases it during the second half
     stickerReady.then((paths) => {
       if (!paths) return;
-      paths.forEach((p) => { const len = p.getTotalLength(); p.style.strokeDasharray = len; p.style.strokeDashoffset = len; });
-      gsap.to(paths, { strokeDashoffset: 0, ease: 'none', stagger: .1, scrollTrigger: { trigger: '.quote', start: 'top 80%', end: 'bottom 75%', scrub: true } });
+      const lens = [...paths].map((p) => p.getTotalLength());
+      paths.forEach((p, i) => { p.style.strokeDasharray = lens[i]; p.style.strokeDashoffset = lens[i]; });
+      gsap.timeline({ scrollTrigger: { trigger: '.quote', start: 'top 80%', end: 'bottom 20%', scrub: true } })
+        .to(paths, { strokeDashoffset: 0, ease: 'none', duration: 1, stagger: .1 })
+        .to(paths, { strokeDashoffset: (i) => lens[i], ease: 'none', duration: 1, stagger: { each: .1, from: 'end' } });
     });
 
     // 3. Cocktail stack: each card slides over the previous one, which shrinks into the deck
