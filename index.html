@@ -1034,13 +1034,11 @@ textarea { min-height: 7rem; resize: vertical; }
       scrollTrigger: { trigger: '.quote', start: 'top 95%', end: wide ? 'top 0%' : 'top 15%', scrub: true },
     });
 
-    // 6. The G sticker: its outline draws itself, then it fills in like a printed sticker
+    // 6. The G sticker draws itself in cream lines across the whole pink section
     stickerReady.then((paths) => {
       if (!paths) return;
-      paths.forEach((p) => { const len = p.getTotalLength(); p.style.strokeDasharray = len; p.style.strokeDashoffset = len; p.style.fillOpacity = 0; });
-      gsap.timeline({ scrollTrigger: { trigger: '.quote', start: 'top 75%', end: wide ? 'top -10%' : 'top 5%', scrub: true } })
-        .to(paths, { strokeDashoffset: 0, ease: 'none', stagger: .08, duration: 1 })
-        .to(paths, { fillOpacity: 1, ease: 'none', duration: .5 }, '-=.25');
+      paths.forEach((p) => { const len = p.getTotalLength(); p.style.strokeDasharray = len; p.style.strokeDashoffset = len; });
+      gsap.to(paths, { strokeDashoffset: 0, ease: 'none', stagger: .1, scrollTrigger: { trigger: '.quote', start: 'top 80%', end: 'bottom 75%', scrub: true } });
     });
 
     // 3. Cocktail stack: each card slides over the previous one, which shrinks into the deck

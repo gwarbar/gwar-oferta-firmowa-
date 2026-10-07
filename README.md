@@ -17,7 +17,7 @@ ta strona jest od niego niezależna, ma `noindex` i nie jest podpinana pod Googl
 - intro przy pierwszym wejściu: promienie G (`g-top`, wstawione inline) wystrzeliwują i odlatują do logo w nagłówku
   (flaga `gwar-intro` w localStorage, pomijane przy „ogranicz ruch”); szklanka w rogu jako pasek postępu scrolla;
   przyciski napełniają się od dołu po najechaniu
-- `brand/` – znaki G z „Gwar-G.ai” (`g-left`, `g-top`, `g-right`, `g-bottom`) i naklejka G z dłonią (`g-sticker.svg`, obrys rysowany scrollem i wypełniany na czarno, obok oceny w Google;
+- `brand/` – znaki G z „Gwar-G.ai” (`g-left`, `g-top`, `g-right`, `g-bottom`) i naklejka G z dłonią (`g-sticker.svg`, kremowy obrys rysowany scrollem obok oceny w Google;
   różowa sekcja otwiera się kołem od miejsca znaku); G-rozbłysk (`g-top`) jako separator w pasku haseł
 
 Podgląd lokalnie: `python3 -m http.server 8090` → http://localhost:8090/
