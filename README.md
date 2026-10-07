@@ -7,7 +7,8 @@ ta strona jest od niego niezależna, ma `noindex` i nie jest podpinana pod Googl
 
 - statyczny HTML, jeden plik `index.html`, bez buildu; animacje: GSAP 3.13 (ScrollTrigger, SplitText) w `vendor/`
   (darmowa licencja „Standard no-charge” GSAP, także do użytku komercyjnego)
-- przejścia przy scrollu: lustro z sali rośnie do pełnego ekranu i delikatnie oddala się w kadr, roleta (pasy od środka) przed okazjami,
+- przejścia przy scrollu: lustro z sali rośnie do pełnego ekranu i delikatnie oddala się w kadr, sekcja okazji wjeżdża jako zaokrąglona
+  zielona karta i rozszerza się do pełnej szerokości, różowa sekcja opinii otwiera się kołem od środka,
   finał „GWAR” z wideo w literach, w które się wlatuje, nalewanie sterowane scrollem (48 klatek w `media/pour/` na canvasie),
   stos kart koktajli (sticky + GSAP), płynna zmiana koloru tła między sekcjami, reveal'e w CSS `animation-timeline: view()`
   (fallback GSAP); `ScrollTrigger.config({ ignoreMobileResize: true })` przeciw skokom paska adresu w Safari

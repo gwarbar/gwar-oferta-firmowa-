@@ -287,9 +287,6 @@ html.on-pink .glass__liquid { fill: var(--cream); }
   .drink h4 { font-size: 2rem; }
 }
 
-/* Blinds: black strips part from the middle to reveal the green panelling */
-.blinds { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; pointer-events: none; }
-.blinds i { flex: 1; background: var(--ink); transform-origin: 50% 50%; margin-bottom: -1px; }
 
 /* Finale: the bar loop seen through the letters of GWAR, then full screen */
 .finale__stage { position: relative; height: 100svh; min-height: 520px; overflow: hidden; display: grid; place-items: center; background: var(--ink); }
@@ -323,7 +320,7 @@ html.on-pink .glass__liquid { fill: var(--cream); }
 
 /* Colour wash: with JS, sections hand their background to <body> */
 body { transition: none; }
-html.wash .marquee, html.wash .formats, html.wash .space, html.wash .quote, html.wash .contact { background: transparent; }
+html.wash .marquee, html.wash .space, html.wash .quote, html.wash .contact { background: transparent; }
 
 /* Packages */
 .packs__head { text-align: center; max-width: 720px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); }
@@ -599,7 +596,7 @@ textarea { min-height: 7rem; resize: vertical; }
     </div>
   </section>
 
-  <section class="formats" id="formaty" aria-labelledby="formats-h" data-bg="#123a2b">
+  <section class="formats" id="formaty" aria-labelledby="formats-h">
     <div class="formats__inner js-pin">
       <div class="wrap formats__head">
         <h2 id="formats-h">Na jaką okazję?</h2>
@@ -992,14 +989,10 @@ textarea { min-height: 7rem; resize: vertical; }
       },
     }).from('.pour__lines p', { y: 30, opacity: .2, stagger: .25, duration: .5 });
 
-    // 4. Blinds into the occasions section
-    const formats = document.querySelector('.formats');
-    const blinds = document.createElement('div'); blinds.className = 'blinds'; blinds.setAttribute('aria-hidden', 'true');
-    blinds.innerHTML = '<i></i>'.repeat(9);
-    formats.prepend(blinds);
-    gsap.to(blinds.children, {
-      scaleY: 0, ease: 'power2.inOut', stagger: { each: .06, from: 'center' },
-      scrollTrigger: { trigger: formats, start: 'top 85%', end: 'top 15%', scrub: .5 },
+    // 4. Occasions: the green panel comes in as a rounded card and widens to full bleed as it reaches the top
+    gsap.fromTo('.formats', { clipPath: 'inset(0% 6% 0% 6% round 40px)' }, {
+      clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none',
+      scrollTrigger: { trigger: '.formats', start: 'top bottom', end: 'top top', scrub: true },
     });
 
     // 5. Finale: fly through the letters of GWAR into the video
