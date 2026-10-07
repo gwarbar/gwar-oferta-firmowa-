@@ -379,15 +379,25 @@ html.wash .marquee, html.wash .space, html.wash .quote, html.wash .contact { bac
 @media (max-width: 520px) { .steps__grid { grid-template-columns: 1fr; } }
 
 /* Review band */
-.quote { background: var(--pink); color: #fff; text-align: center; position: relative; overflow: hidden; min-height: 130svh; display: grid; place-items: center; }
+.quote { background: var(--pink); color: #fff; position: relative; overflow: clip; padding-block: clamp(4rem, 9vw, 7rem); min-height: 115svh; display: grid; align-items: center; }
 .quote .wrap { position: relative; z-index: 1; }
 /* Pink arrives as a circle growing from the middle (same motif as the mirror), not as a colour blend */
 .quote__bg { position: absolute; inset: 0; background: var(--pink); }
-.quote__g { position: absolute; inset: 6svh 0; display: grid; place-items: center; color: rgba(255, 255, 255, .6); pointer-events: none; }
-.quote__g svg { height: 100%; max-width: 92vw; }
-.quote__stars { font-size: 1.6rem; letter-spacing: .2em; }
-.quote__big { font-family: var(--font-display); text-transform: uppercase; font-size: var(--step-3); line-height: .95; margin: 1rem auto; max-width: 16ch; }
-.quote p { max-width: 50ch; margin-inline: auto; }
+/* Text and reviews on the left, the G sticker on the right, held in view while the reviews scroll past */
+.quote__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; width: 100%; }
+.quote__art { height: min(78svh, 700px); display: grid; place-items: center; }
+.quote__g { height: 100%; width: 100%; display: grid; place-items: center; color: var(--cream); }
+.quote__g svg { height: 100%; width: auto; max-width: 100%; overflow: visible; }
+.quote__g path { stroke: var(--cream); }
+@media (max-width: 860px) {
+  .quote__grid { grid-template-columns: 1fr; }
+  .quote__art { position: static; order: -1; height: auto; }
+  .quote__g svg { width: min(68vw, 320px); height: auto; }
+}
+.quote__stars { font-size: 1.6rem; letter-spacing: .2em; margin: 0; }
+.quote__big { font-size: var(--step-2); color: #fff; margin: 1rem 0; }
+.quote__score { display: block; font-size: clamp(6rem, 18vw, 13rem); line-height: .85; }
+.quote p { max-width: 50ch; }
 .quote a { color: #fff; font-weight: 700; }
 
 /* FAQ */
@@ -717,13 +727,16 @@ textarea { min-height: 7rem; resize: vertical; }
     </div>
   </section>
 
-  <section class="quote section" aria-label="Opinie w Google">
+  <section class="quote section" aria-labelledby="quote-h">
     <div class="quote__bg js-quote-bg" aria-hidden="true"></div>
-    <div class="quote__g js-quote-g" aria-hidden="true"></div>
-    <div class="wrap">
-      <p class="quote__stars" aria-hidden="true">★★★★★</p>
-      <p class="quote__big">4,9 z 1 153 opinii</p>
-      <p>Tyle wystawili nam goście w Google (stan na 01.10.2026). <a href="https://maps.app.goo.gl/imzjTp75oiqoPFCE8" target="_blank" rel="noopener">Przeczytaj opinie</a></p>
+    <div class="wrap quote__grid">
+      <div>
+        <p class="eyebrow" style="color: #fff; opacity: .8">Opinie w Google</p>
+        <p class="quote__stars" aria-hidden="true">★★★★★</p>
+        <h2 id="quote-h" class="quote__big"><span class="quote__score">4,9</span> z 1&nbsp;153 opinii</h2>
+        <p>Tyle wystawili nam goście w Google (stan na 01.10.2026). <a href="https://maps.app.goo.gl/imzjTp75oiqoPFCE8" target="_blank" rel="noopener">Przeczytaj wszystkie opinie</a></p>
+      </div>
+      <div class="quote__art" aria-hidden="true"><div class="quote__g js-quote-g"></div></div>
     </div>
   </section>
 
@@ -906,6 +919,12 @@ textarea { min-height: 7rem; resize: vertical; }
   const mm = gsap.matchMedia();
   const cssReveals = window.CSS && CSS.supports('animation-timeline: view()');
 
+  // G sticker for the reviews section (shown filled even without motion)
+  const stickerReady = fetch('brand/g-sticker.svg').then((r) => r.text()).then((svg) => {
+    const host = document.querySelector('.js-quote-g'); host.innerHTML = svg;
+    return host.querySelectorAll('path');
+  }).catch(() => null);
+
   // Intro: rays burst out of the centre, the G turns into place, then shrinks into the header logo
   const introOn = root.classList.contains('intro-on');
   const heroDelay = introOn ? 1.35 : 0;
@@ -1007,19 +1026,22 @@ textarea { min-height: 7rem; resize: vertical; }
       .from('.js-finale-shade', { opacity: 0, duration: .3 }, .7)
       .from('.js-finale-cta', { opacity: 0, y: 40, duration: .3 }, .75);
 
-    // 7. Pink opens as a circle from the centre of the section, where the G is drawn
-    gsap.fromTo('.js-quote-bg', { clipPath: 'circle(0% at 50% 50%)' }, {
-      clipPath: 'circle(75% at 50% 50%)', ease: 'none',
-      scrollTrigger: { trigger: '.quote', start: 'top 95%', end: 'top 5%', scrub: true },
+    // 7. Pink opens as a circle growing from where the G sticker sits
+    const wide = innerWidth > 860;
+    const at = wide ? '72% 40%' : '50% 18%';
+    gsap.fromTo('.js-quote-bg', { clipPath: `circle(0% at ${at})` }, {
+      clipPath: `circle(120% at ${at})`, ease: 'none',
+      scrollTrigger: { trigger: '.quote', start: 'top 95%', end: wide ? 'top 0%' : 'top 15%', scrub: true },
     });
 
-    // 6. The G sticker draws itself across the pink section
-    fetch('brand/g-sticker.svg').then((r) => r.text()).then((svg) => {
-      const host = document.querySelector('.js-quote-g'); host.innerHTML = svg;
-      const paths = host.querySelectorAll('path');
-      paths.forEach((p) => { const len = p.getTotalLength(); p.style.strokeDasharray = len; p.style.strokeDashoffset = len; });
-      gsap.to(paths, { strokeDashoffset: 0, ease: 'none', stagger: .12, scrollTrigger: { trigger: '.quote', start: 'top 80%', end: 'bottom 65%', scrub: true } });
-    }).catch(() => {});
+    // 6. The G sticker: its outline draws itself, then it fills in like a printed sticker
+    stickerReady.then((paths) => {
+      if (!paths) return;
+      paths.forEach((p) => { const len = p.getTotalLength(); p.style.strokeDasharray = len; p.style.strokeDashoffset = len; p.style.fillOpacity = 0; });
+      gsap.timeline({ scrollTrigger: { trigger: '.quote', start: 'top 75%', end: wide ? 'top -10%' : 'top 5%', scrub: true } })
+        .to(paths, { strokeDashoffset: 0, ease: 'none', stagger: .08, duration: 1 })
+        .to(paths, { fillOpacity: 1, ease: 'none', duration: .5 }, '-=.25');
+    });
 
     // 3. Cocktail stack: each card slides over the previous one, which shrinks into the deck
     const cards = gsap.utils.toArray('.js-stack .drink');
