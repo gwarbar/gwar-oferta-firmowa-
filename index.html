@@ -386,6 +386,9 @@ html.wash .marquee, html.wash .space, html.wash .quote, html.wash .contact { bac
 /* Text and reviews on the left, the G sticker on the right, held in view while the reviews scroll past */
 .quote__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; width: 100%; }
 .quote__art { height: min(78svh, 700px); display: grid; place-items: center; }
+/* The rating sits low, level with the bottom of the G, so it is mid-screen when the G is fully drawn */
+.quote__text { align-self: end; padding-bottom: 6svh; }
+@media (max-width: 860px) { .quote__text { padding-bottom: 0; } }
 .quote__g { height: 100%; width: 100%; display: grid; place-items: center; color: var(--cream); }
 .quote__g svg { height: 100%; width: auto; max-width: 100%; overflow: visible; }
 .quote__g path { stroke: var(--cream); fill: none !important; } /* always a line drawing, even if an old cached file had a fill */
@@ -730,7 +733,7 @@ textarea { min-height: 7rem; resize: vertical; }
   <section class="quote section" aria-labelledby="quote-h">
     <div class="quote__bg js-quote-bg" aria-hidden="true"></div>
     <div class="wrap quote__grid">
-      <div>
+      <div class="quote__text">
         <p class="eyebrow" style="color: #fff; opacity: .8">Opinie w Google</p>
         <p class="quote__stars" aria-hidden="true">★★★★★</p>
         <h2 id="quote-h" class="quote__big"><span class="quote__score">4,9</span> z 1&nbsp;153 opinii</h2>
