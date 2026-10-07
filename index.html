@@ -381,6 +381,8 @@ html.wash .marquee, html.wash .formats, html.wash .space, html.wash .quote, html
 /* Review band */
 .quote { background: var(--pink); color: #fff; text-align: center; position: relative; overflow: hidden; min-height: 130svh; display: grid; place-items: center; }
 .quote .wrap { position: relative; z-index: 1; }
+/* Pink arrives as a circle growing from the middle (same motif as the mirror), not as a colour blend */
+.quote__bg { position: absolute; inset: 0; background: var(--pink); }
 .quote__g { position: absolute; inset: 6svh 0; display: grid; place-items: center; color: rgba(255, 255, 255, .6); pointer-events: none; }
 .quote__g svg { height: 100%; max-width: 92vw; }
 .quote__stars { font-size: 1.6rem; letter-spacing: .2em; }
@@ -717,7 +719,8 @@ textarea { min-height: 7rem; resize: vertical; }
     </div>
   </section>
 
-  <section class="quote section" aria-label="Opinie w Google" data-bg="#DA3365">
+  <section class="quote section" aria-label="Opinie w Google">
+    <div class="quote__bg js-quote-bg" aria-hidden="true"></div>
     <div class="quote__g js-quote-g" aria-hidden="true"></div>
     <div class="wrap">
       <p class="quote__stars" aria-hidden="true">★★★★★</p>
@@ -1009,6 +1012,12 @@ textarea { min-height: 7rem; resize: vertical; }
       .fromTo(finVideo, { filter: 'brightness(1.7) saturate(1.15)' }, { filter: 'brightness(1) saturate(1)', duration: .4 }, .6)
       .from('.js-finale-shade', { opacity: 0, duration: .3 }, .7)
       .from('.js-finale-cta', { opacity: 0, y: 40, duration: .3 }, .75);
+
+    // 7. Pink opens as a circle from the centre of the section, where the G is drawn
+    gsap.fromTo('.js-quote-bg', { clipPath: 'circle(0% at 50% 50%)' }, {
+      clipPath: 'circle(75% at 50% 50%)', ease: 'none',
+      scrollTrigger: { trigger: '.quote', start: 'top 95%', end: 'top 5%', scrub: true },
+    });
 
     // 6. The G sticker draws itself across the pink section
     fetch('brand/g-sticker.svg').then((r) => r.text()).then((svg) => {
