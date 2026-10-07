@@ -282,7 +282,7 @@ h3 { font-size: var(--step-2); }
 
 /* Colour wash: with JS, sections hand their background to <body> */
 body { transition: none; }
-html.wash .marquee, html.wash .space, html.wash .quote, html.wash .contact { background: transparent; }
+html.wash .marquee, html.wash .formats, html.wash .space, html.wash .quote, html.wash .contact { background: transparent; }
 
 /* Packages */
 .packs__head { text-align: center; max-width: 720px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); }
@@ -529,7 +529,7 @@ textarea { min-height: 7rem; resize: vertical; }
     </div>
   </section>
 
-  <section class="formats" id="formaty" aria-labelledby="formats-h">
+  <section class="formats" id="formaty" aria-labelledby="formats-h" data-bg="#123a2b">
     <div class="formats__inner js-pin">
       <div class="wrap formats__head">
         <h2 id="formats-h">Na jaką okazję?</h2>
@@ -947,12 +947,17 @@ textarea { min-height: 7rem; resize: vertical; }
     document.querySelector('.js-track').parentElement.style.overflowX = 'auto';
   });
   // Created after the pinned sections so their start/end include the pin spacing
-  // Colour wash: each section hands its colour to <body> while it is in the middle of the screen
+  // Colour wash: <body> blends from one section's colour to the next, driven by the scroll itself.
+  // The blend runs while the next section travels from the bottom of the screen to 20% from the top.
   document.documentElement.classList.add('wash');
-  gsap.utils.toArray('[data-bg]').forEach((sec) => {
-    ScrollTrigger.create({
-      trigger: sec, start: 'top 55%', end: 'bottom 55%',
-      onToggle: (self) => self.isActive && gsap.to(document.body, { backgroundColor: sec.dataset.bg, duration: .6, ease: 'power2.out', overwrite: 'auto' }),
+  const washed = gsap.utils.toArray('[data-bg]');
+  gsap.set(document.body, { backgroundColor: washed[0].dataset.bg });
+  washed.forEach((sec, i) => {
+    const from = i && washed[i - 1].dataset.bg, to = sec.dataset.bg;
+    if (!i || from === to) return;
+    gsap.fromTo(document.body, { backgroundColor: from }, {
+      backgroundColor: to, ease: 'none', immediateRender: false,
+      scrollTrigger: { trigger: sec, start: 'top bottom', end: 'top 20%', scrub: true },
     });
   });
   // Pins were created out of page order (the desktop formats pin sits above the finale): recalculate top to bottom
