@@ -43,15 +43,15 @@ Wigilie firmowe · Integracje · Wynajem na wyłączność · Koktajle robione n
 
 Opis wideo: Barman nalewa składniki koktajlu do shakera.
 ## **Dlaczego u nas**
-  - Tytuł: **Dlaczego u nas, a nie w hotelowej sali**
+  - Tytuł: **Dlaczego u nas**
   - Wstęp: Gwar to po polsku szum rozmów. Właśnie tego chcecie na firmowej imprezie: ludzi, którzy siedzą przy jednym stole i nie patrzą na zegarek.
-|  |  |
-| :- | :- |
-| Kafelek | Tekst |
-| Wnętrze, które zachęca | Cegła, zielona boazeria, okrągłe lustro i dużo roślin. Nie trzeba dekorować. |
-| Bar, który nadąża | Koktajle robimy na miejscu. Kartę na wieczór ustalamy z wami. |
-| Kazimierz za drzwiami | Mostowa 8, kilka kroków od Kładki Bernatka i bulwarów. Łatwo dojechać, trudno wyjść. |
-| 4,9 w Google | Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór. |
+|  |  |  |
+| :- | :- | :- |
+| Kafelek | Tekst |  |
+| Wnętrze, które zachęca | Cegła, zielona boazeria, okrągłe lustro i dużo roślin. Nie trzeba dekorować. | Zmien tu zdjecie na: ROOM-PINK |
+| Bar, który nadąża | Koktajle robimy na miejscu. Kartę na wieczór ustalamy z wami. | Tu zdjęcie: BAR-COUNTER |
+| Kazimierz za drzwiami | Mostowa 8, kilka kroków od Kładki Bernatka i bulwarów. Łatwo dojechać, trudno wyjść. |  |
+| 4,9 w Google | Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór. |  |
 
 Opisy zdjęć: Sala Gwaru: ceglana ściana, okrągłe lustro, zielona boazeria · Czerwony koktajl w kryształowym kieliszku na tle baru · Dwie osoby z grzańcami przy zielonym stoliku w ogródku · Kanapa pod oknem otoczona roślinami.
 ## **Za barem (nalewanie)**
@@ -68,13 +68,13 @@ Opis zdjęcia: Barman przelewa składnik koktajlu z jiggera do shakera.
 ## **Na jaką okazję?**
   - Tytuł: **Na jaką okazję?**
   - Wstęp: Cztery najczęstsze scenariusze. Każdy dopasujemy do liczby osób, budżetu i godzin.
-|  |  |  |  |
-| :- | :- | :- | :- |
-| Karta | Etykieta | Opis | Punkty |
-| Wigilia firmowa | Listopad–grudzień | Grudniowy wieczór dla całego zespołu. Grzańce na powitanie, przekąski i bar, który nie robi przerw. | Grzańce w Gwarze na start · Cała sala albo jej część · Playlista pod wasz zespół |
-| Integracja zespołu | Cały rok | Afterwork po kwartale, powitanie nowych osób, wyjście po wygranym projekcie. | Od kilku do 50 osób · Rezerwacja części sali · Ogródek na patio w sezonie |
-| Gwar na wyłączność | Tylko dla was | Cały lokal na wasz wieczór. Zamykamy drzwi dla innych gości, a muzykę i kartę ustawiamy pod was. | Cała sala, do 50 osób · Własna karta koktajli · Godziny do ustalenia |
-| Twój pomysł | Coś innego? | Premiera, urodziny firmy, spotkanie z klientami, warsztaty koktajlowe **\[DO UZUPEŁNIENIA: potwierdzić warsztaty\]**. Napiszcie, co planujecie. | Format szyty na miarę · Rozmowa zamiast cennika |
+|  |  |  |  |  |
+| :- | :- | :- | :- | :- |
+| Karta | Etykieta | Opis | Punkty |  |
+| Wigilia firmowa | Listopad–grudzień | Grudniowy wieczór dla całego zespołu. Grzańce na powitanie, przekąski i bar, który nie robi przerw. | Grzańce w Gwarze na start · Cała sala albo jej część · Playlista pod wasz zespół | Tu zdjecie: 4N0A8356.jpg  |
+| Integracja zespołu | Cały rok | Afterwork po kwartale, powitanie nowych osób, wyjście po wygranym projekcie. | Od kilku do 50 osób · Rezerwacja części sali · Ogródek na patio w sezonie | Tu zdjecie: BPRO2092.jpg - wyśrodkuj je  |
+| Gwar na wyłączność | Tylko dla was | Cały lokal na wasz wieczór. Zamykamy drzwi dla innych gości, a muzykę i kartę ustawiamy pod was. | Cała sala, do 50 osób · Własna karta koktajli · Godziny do ustalenia | Zmien tu zdjecie na: ROOM-PINK |
+| Twój pomysł | Coś innego? | Premiera, urodziny firmy, spotkanie z klientami.    Napiszcie, co planujecie. | Format szyty na miarę · Rozmowa zamiast cennika | Zmien tu zdjecie na: BPRO2048.jpg |
 
 Opisy zdjęć: Grzane wino w szklance na tle pomarańczy · Dłoń z koktajlem i preclem w kieliszku na tle zielonej ściany · Pusta sala Gwaru ze stolikami, ceglaną ścianą i lustrem · Koktajl z anyżem na srebrnej tacy.
 ## **Karta koktajli**
@@ -85,9 +85,10 @@ Nazwy i składy czekają na „Menu Firmowe GWAR” z Claude Design.
 | :- | :- | :- | :- |
 | Karta | Etykieta | Nazwa | Skład |
 | 1 | Wasze wydarzenie zaczyna się u nas | Firmowa integracja, spotkanie z klientami, urodziny czy wieczór panieński: każdą okazję zamieniamy w wieczór, o którym się mówi. Zapewniamy klimatyczne wnętrze, profesjonalną obsługę i koktajle, które same rozkręcają atmosferę. Wy zapraszacie gości, a my zajmujemy się resztą. |  |
-| 2 | Na powitanie | **\[DO UZUPEŁNIENIA\]** | **\[DO UZUPEŁNIENIA\]** |
-| 3 | Autorski | **\[DO UZUPEŁNIENIA\]** | **\[DO UZUPEŁNIENIA\]** |
-| 4 | Na wigilię | Grzańce w Gwarze | **\[DO UZUPEŁNIENIA: warianty\]** |
+| 2 | Koktajle, po które się wraca | Każdy koktajl robimy od zera: świeże soki wyciskane na miejscu, domowe syropy i alkohole, które wybieramy z rozmysłem. W karcie znajdziesz klasyki w najlepszym wydaniu i autorskie kompozycje, których nie spróbujesz nigdzie indziej. Nie wiesz, co wybrać? Powiedz barmanowi, na co masz ochotę, a przygotuje drinka specjalnie dla Ciebie. |  |
+| 3 | Karta autorska | To nasza wizytówka: koktajle, których nie spróbujecie nigdzie indziej. Każda pozycja to efekt pracy naszych barmanów, czyli sezonowe składniki, nieoczywiste połączenia i dopracowany smak. |  |
+| 4 | Na wigilię | Grzańce i grzane koktajle w Gwarze |  |
+| 5 |  |  |  |
 
 Opisy zdjęć: Czerwony koktajl w kryształowym kieliszku na barze · Pomarańczowy koktajl z preclem przy zielonej ścianie · Koktajl z anyżem na srebrnej tacy · Grzane wino i gruszkowy grzaniec z cynamonem.
 ## **Pakiety**
@@ -196,3 +197,4 @@ Wszystkie żółte miejsca ze strony w jednym miejscu. Odhaczajcie, co już maci
   - ☐ Link do polityki prywatności
   - ☐ Odświeżona ocena i liczba opinii z Google przed mailingiem
 Zamien zdjecia drinkow na zdjecia: 4N0A8444.jpg, 4NoA8356.jpg, BPRO2175.jpg, BPRO2053.jpg, BPRO2248.jpg
+Przy sekcji “Wnętrze, które zachęca”

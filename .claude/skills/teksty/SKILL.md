@@ -1,6 +1,6 @@
 ---
 name: teksty
-description: Pobiera teksty strony z Google Docs „Gwar dla firm – teksty strony”, kopiuje je do Claude Doc o tej samej nazwie pokazuje listę planowanych zmian i po zgodzie właściciela wdraża je na ofertafirmowa.gwar.bar (index.html), łącznie z poleceniami dopisanymi w dokumencie. Użyj, gdy właściciel pisze /teksty, „zsynchronizuj teksty”, „zerknij na zmiany w docs” itp.
+description: Pobiera teksty strony z Google Docs „Gwar dla firm – teksty strony”, kopiuje je do Claude Doc o tej samej nazwie, pokazuje listę planowanych zmian i po zgodzie właściciela wdraża je na ofertafirmowa.gwar.bar (index.html), łącznie z poleceniami dopisanymi w dokumencie. Użyj, gdy właściciel pisze /teksty, „zsynchronizuj teksty”, „zerknij na zmiany w docs” itp.
 ---
 
 # /teksty: Google Docs → Claude Doc → strona
