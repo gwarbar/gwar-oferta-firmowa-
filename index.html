@@ -274,13 +274,15 @@ html.toc-open .burger span::after { transform: translateY(-6px) rotate(-45deg); 
 /* Mirror: the round mirror on the brick wall opens into the room */
 .mirror__stage { position: relative; height: 100svh; min-height: 520px; overflow: hidden; display: grid; place-items: center; }
 .mirror__img { position: absolute; inset: 0; overflow: hidden; will-change: transform; }
-.mirror__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.mirror__img img { width: 100%; height: 100%; object-fit: cover; object-position: 49% 44%; }
+.mirror__img img.is-placed { position: absolute; max-width: none; object-fit: fill; transform-origin: 0 0; }
 .mirror__ring { position: absolute; left: 50%; top: 50%; width: 0; height: 0; border-radius: 50%; border: 3px solid var(--cream); transform: translate(-50%, -50%); opacity: 0; pointer-events: none; }
-.mirror__text { position: relative; text-align: center; padding-inline: var(--gutter); text-shadow: 0 2px 30px rgba(0,0,0,.6); }
+.mirror__text { position: relative; align-self: end; margin-bottom: 3svh; text-align: center; padding-inline: var(--gutter); text-shadow: 0 2px 30px rgba(0,0,0,.6); }
 .mirror__text h2 { font-size: var(--step-4); color: var(--text); }
 .mirror__text p { color: var(--cream); letter-spacing: .16em; text-transform: uppercase; font-size: .8rem; margin-bottom: 1rem; }
 .mirror__stage::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(11,11,10,.55)); pointer-events: none; }
 .mirror__text { z-index: 1; }
+@media (max-width: 700px) { .mirror__text { margin-bottom: 9svh; } }
 
 /* Pour: frame sequence scrubbed by scroll */
 .pour__stage { position: relative; height: 100svh; min-height: 520px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: var(--gutter); padding-inline: var(--gutter); max-width: 1280px; margin: 0 auto; }
@@ -739,7 +741,7 @@ textarea { min-height: 7rem; resize: vertical; }
 
   <section class="mirror" aria-labelledby="mirror-h" data-bg="#0b0b0a">
     <div class="mirror__stage js-mirror">
-      <div class="mirror__img"><img src="media/room-brick-1600.webp" srcset="media/room-brick-800.webp 800w, media/room-brick-1600.webp 1600w" sizes="100vw" alt="Sala Gwaru: ceglana ściana, okrągłe lustro i zielona boazeria" width="1067" height="1600" loading="lazy"></div>
+      <div class="mirror__img"><img src="media/mirror-wall-1600.webp" srcset="media/mirror-wall-800.webp 800w, media/mirror-wall-1600.webp 1448w" sizes="100vw" alt="Ceglana ściana Gwaru z okrągłym lustrem podświetlonym na zielono, roślinami i zieloną boazerią; w lustrze odbija się sala z neonem GWAR" width="1448" height="1086" loading="lazy"></div>
       <div class="mirror__ring" aria-hidden="true"></div>
       <div class="mirror__text"><p>Zajrzyjcie do środka</p><h2 id="mirror-h">Wasza sala<br>na wieczór</h2></div>
     </div>
@@ -1056,27 +1058,47 @@ textarea { min-height: 7rem; resize: vertical; }
       gsap.to(o, { v: to, duration: 1.6, ease: 'power2.out', delay: .6 + heroDelay, onUpdate: () => { el.textContent = fmt(o.v); } });
     });
 
-    // 1. Mirror: a small round mirror grows until the room fills the screen
+    // 1. Mirror: the circle starts as the real mirror on the wall photo, grows to show the whole wall,
+    //    then pulls back into a framed picture of the entire wall
     const stage = document.querySelector('.js-mirror');
-    const img = stage.querySelector('.mirror__img'), ring = stage.querySelector('.mirror__ring');
-    const r0 = () => Math.min(innerWidth, innerHeight) * .2;
-    const r1 = () => Math.hypot(innerWidth, innerHeight) / 2 + 10;
-    const mirror = { r: r0() };
+    const img = stage.querySelector('.mirror__img'), photo = img.firstElementChild, ring = stage.querySelector('.mirror__ring');
+    const IW = 1448, IH = 1086, MX = 714, MY = 478, MR = 222; // mirror centre and radius in the photo, px
+    const st = { grow: 0, back: 0 };
+    photo.classList.add('is-placed');
+    const lerp = (a, b, t) => a + (b - a) * t;
     const paint = () => {
-      img.style.clipPath = `circle(${mirror.r}px at 50% 50%)`;
-      ring.style.width = ring.style.height = `${mirror.r * 2 + 18}px`;
+      const W = stage.clientWidth, H = stage.clientHeight;
+      const sc = Math.max(W / IW, H / IH);                          // cover
+      const sn = Math.min(W * (W < 700 ? .92 : .86) / IW, H * .8 / IH); // whole wall, framed
+      // cover position keeps the mirror as central as the crop allows
+      const ox = Math.min(0, Math.max(W - IW * sc, W / 2 - MX * sc)), oy = Math.min(0, Math.max(H - IH * sc, H / 2 - MY * sc));
+      const px = ox + MX * sc, py = oy + MY * sc;                    // mirror centre on screen
+      const z0 = Math.max(1, Math.min(1.15, .43 * Math.min(W, H) / (MR * sc)));
+      if (st.back <= 0) {
+        // phase 1: zoom from z0 to 1 around the mirror centre; circle from the mirror rim to the farthest corner
+        const z = lerp(z0, 1, st.grow), s = sc * z;
+        photo.style.width = IW + 'px'; photo.style.height = IH + 'px';
+        photo.style.transform = `translate(${px - MX * s}px, ${py - MY * s}px) scale(${s})`;
+        const r = lerp(MR * sc * z0, Math.hypot(Math.max(px, W - px), Math.max(py, H - py)) + 10, st.grow);
+        img.style.clipPath = `circle(${r}px at ${px}px ${py}px)`;
+        ring.style.left = px + 'px'; ring.style.top = py + 'px';
+        ring.style.width = ring.style.height = `${r * 2 + 18}px`;
+      } else {
+        // phase 2: cover → whole wall in a rounded frame
+        const t = st.back, s = lerp(sc, sn, t);
+        const x = lerp(ox, (W - IW * sn) / 2, t), y = lerp(oy, (H - IH * sn) / 2, t);
+        photo.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+        const L = Math.max(0, x), T = Math.max(0, y), R = Math.max(0, W - (x + IW * s)), B = Math.max(0, H - (y + IH * s));
+        img.style.clipPath = `inset(${T}px ${R}px ${B}px ${L}px round ${28 * t}px)`;
+      }
     };
     gsap.timeline({
-      scrollTrigger: { trigger: stage, start: 'top top', end: '+=200%', pin: true, scrub: .6, invalidateOnRefresh: true },
+      scrollTrigger: { trigger: stage, start: 'top top', end: '+=200%', pin: true, scrub: .6, invalidateOnRefresh: true, onRefresh: paint },
     })
-      .fromTo(mirror, { r: r0 }, { r: r1, ease: 'power2.in', duration: 1, onUpdate: paint }, 0)
-      .fromTo(img.firstElementChild, { scale: 1.35 }, { scale: 1, ease: 'none', duration: 1 }, 0)
+      .fromTo(st, { grow: 0 }, { grow: 1, ease: 'power2.in', duration: 1, onUpdate: paint }, 0)
       .fromTo(ring, { opacity: 1 }, { opacity: 0, duration: .35 }, .55)
       .fromTo('.mirror__text', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .3 }, .7)
-      // after full screen: a gentle zoom-out into a framed picture of the room
-      .to(img, { scale: .84, borderRadius: 28, ease: 'power1.inOut', duration: .7 }, 1.15)
-      .to(img.firstElementChild, { scale: 1.08, ease: 'power1.inOut', duration: .7 }, 1.15)
-      .to('.mirror__text', { y: -20, ease: 'power1.inOut', duration: .7 }, 1.15);
+      .fromTo(st, { back: 0 }, { back: 1, ease: 'power1.inOut', duration: .7, immediateRender: false, onUpdate: paint }, 1.15);
     paint();
 
     // 2. Pour: 48 frames drawn on a canvas, driven by the scroll position
