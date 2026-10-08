@@ -17,6 +17,8 @@ ta strona jest od niego niezależna, ma `noindex` i nie jest podpinana pod Googl
 - intro przy pierwszym wejściu: promienie G (`g-top`, wstawione inline) wystrzeliwują i odlatują do logo w nagłówku
   (flaga `gwar-intro` w localStorage, pomijane przy „ogranicz ruch”); szklanka w rogu jako pasek postępu scrolla;
   przyciski napełniają się od dołu po najechaniu
+- spis sekcji: klik w kieliszek (na telefonie także hamburger w nagłówku) otwiera panel z sekcjami, podświetla bieżącą,
+  pokazuje „Wypite: x%”, przewija do sekcji; Esc, klik obok i Tab w obrębie panelu
 - `brand/` – znaki G z „Gwar-G.ai” (`g-left`, `g-top`, `g-right`, `g-bottom`) i naklejka G z dłonią (`g-sticker.svg`, kremowy obrys obok oceny w Google, bumerang: rysuje się do połowy sekcji i zmazuje w drugiej połowie;
   różowa sekcja otwiera się kołem od miejsca znaku); G-rozbłysk (`g-top`) jako separator w pasku haseł
 
