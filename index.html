@@ -202,15 +202,15 @@ html.on-pink .glass__liquid { fill: var(--cream); }
 @media (max-width: 960px) { .why__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .why__head { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .why__grid { grid-template-columns: 1fr; } .why__item:nth-child(even) { margin-top: 0; } }
 
-/* Formats – horizontal pin on wide screens */
+/* Formats */
 .formats { background: var(--bottle); position: relative; overflow: hidden; }
 .formats__inner { padding-block: clamp(4rem, 8vw, 6rem); }
 .formats__head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 .formats__head h2 { color: var(--cream); max-width: 12ch; }
 .formats__head p { color: var(--cream); opacity: .85; max-width: 38ch; margin: 0; }
-.track { display: flex; gap: clamp(1rem, 2.5vw, 2rem); padding-inline: var(--gutter); width: max-content; }
+.track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.6rem); max-width: 1280px; margin: 0 auto; padding-inline: var(--gutter); }
 .card {
-  width: min(78vw, 420px); flex: none;
+  min-width: 0;
   background: var(--bottle-deep); border-radius: var(--radius); overflow: hidden;
   display: flex; flex-direction: column;
 }
@@ -222,19 +222,9 @@ html.on-pink .glass__liquid { fill: var(--cream); }
 .card p { color: var(--cream); opacity: .82; margin: 0; font-size: .97rem; }
 .card ul { margin: .4rem 0 0; padding: 0; list-style: none; display: grid; gap: .4rem; font-size: .92rem; color: var(--cream); }
 .card li::before { content: '✱'; color: var(--pink); margin-right: .6rem; font-size: .8em; }
-/* Desktop: the pinned panel is exactly one screen tall, so nothing is cut off while it slides sideways */
-@media (min-width: 900px) {
-  .formats__inner { height: 100svh; min-height: 640px; display: flex; flex-direction: column; justify-content: center; padding-block: calc(64px + 2rem) 2.5rem; }
-  .formats__head { margin-bottom: clamp(1.2rem, 3svh, 2.5rem); }
-  .card { width: clamp(400px, 38vw, 580px); }
-  .card figure { aspect-ratio: auto; height: clamp(180px, calc(100svh - 500px), 440px); }
-  .card__body { padding: 1.3rem 1.5rem 1.5rem; gap: .6rem; }
-}
-@media (max-width: 899px) {
-  .track { width: auto; flex-direction: column; align-items: stretch; }
-  .card { width: 100%; }
-  .card figure { aspect-ratio: 16 / 10; }
-}
+/* Occasions: a plain grid of four cards (4 / 2 / 1 columns) */
+@media (max-width: 1100px) { .track { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .track { grid-template-columns: 1fr; } .card figure { aspect-ratio: 16 / 10; } }
 
 /* Mirror: the round mirror on the brick wall opens into the room */
 .mirror__stage { position: relative; height: 100svh; min-height: 520px; overflow: hidden; display: grid; place-items: center; }
@@ -491,9 +481,9 @@ textarea { min-height: 7rem; resize: vertical; }
       <span>dla firm</span>
     </a>
     <nav aria-label="Sekcje">
+      <a href="#formaty">Okazje</a>
       <a href="#karta">Koktajle</a>
       <a href="#pakiety">Pakiety</a>
-      <a href="#formaty">Okazje</a>
       <a href="#sala">Sala</a>
       <a href="#faq">FAQ</a>
       <a class="btn" href="#zapytanie" data-ev="cta_header">Zapytaj o termin</a>
@@ -540,47 +530,6 @@ textarea { min-height: 7rem; resize: vertical; }
     </div>
   </div>
 
-  <section class="mirror" aria-labelledby="mirror-h" data-bg="#0b0b0a">
-    <div class="mirror__stage js-mirror">
-      <div class="mirror__img"><img src="media/room-brick-1600.webp" srcset="media/room-brick-800.webp 800w, media/room-brick-1600.webp 1600w" sizes="100vw" alt="Sala Gwaru: ceglana ściana, okrągłe lustro i zielona boazeria" width="1067" height="1600" loading="lazy"></div>
-      <div class="mirror__ring" aria-hidden="true"></div>
-      <div class="mirror__text"><p>Zajrzyjcie do środka</p><h2 id="mirror-h">Wasza sala<br>na wieczór</h2></div>
-    </div>
-  </section>
-
-  <section class="pour" aria-labelledby="bar-h" data-bg="#0b0b0a">
-    <div class="pour__stage js-pour">
-      <div class="pour__media">
-        <img src="media/pour/01.webp" alt="Barman przelewa składnik koktajlu z jiggera do shakera" width="540" height="960">
-        <canvas aria-hidden="true"></canvas>
-      </div>
-      <div class="pour__text">
-        <p class="eyebrow">Za barem</p>
-        <h2 id="bar-h">Koktajle, o których <em>się gada</em></h2>
-        <div class="pour__lines">
-          <p><strong>Karta na wasz wieczór</strong>Ustalamy z wami kilka pozycji, żeby bar szedł szybko, a nikt nie czekał.</p>
-          <p><strong>Koktajl z nazwą firmy</strong>Przygotujemy autorski koktajl na waszą imprezę. <span class="todo">potwierdzić</span></p>
-          <p><strong>Bezalkoholowe też na poziomie</strong>Lemoniady, kawa Mott, herbaty Ronnefeldt.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="karta" aria-labelledby="menu-h" data-bg="#0b0b0a">
-    <div class="wrap menu">
-      <div class="menu__head">
-        <p class="eyebrow">Menu firmowe</p>
-        <h3 id="menu-h">Karta na wasz wieczór</h3>
-      </div>
-      <div class="stack js-stack">
-        <article class="drink" style="--i: 0"><figure><img src="media/coupe-bar-800.webp" srcset="media/coupe-bar-800.webp 800w, media/coupe-bar-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Czerwony koktajl w kryształowym kieliszku na barze" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Klasyk Gwaru</p><h4><span class="todo">nazwa koktajlu</span></h4><p><span class="todo">skład z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
-        <article class="drink" style="--i: 1"><figure><img src="media/spritz-green-800.webp" srcset="media/spritz-green-800.webp 800w, media/spritz-green-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Pomarańczowy koktajl z preclem przy zielonej ścianie" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Na powitanie</p><h4><span class="todo">nazwa koktajlu</span></h4><p><span class="todo">skład z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
-        <article class="drink" style="--i: 2"><figure><img src="media/coupe-tray-800.webp" srcset="media/coupe-tray-800.webp 800w, media/coupe-tray-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Koktajl z anyżem na srebrnej tacy" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Autorski</p><h4><span class="todo">nazwa koktajlu</span></h4><p><span class="todo">skład z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
-        <article class="drink" style="--i: 3"><figure><img src="media/winter-flatlay-800.webp" srcset="media/winter-flatlay-800.webp 800w, media/winter-flatlay-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Grzane wino i gruszkowy grzaniec z cynamonem" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Na wigilię</p><h4>Grzańce w Gwarze</h4><p><span class="todo">warianty z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
-      </div>
-    </div>
-  </section>
-
   <section class="section" aria-labelledby="why-h" data-bg="#0b0b0a">
     <div class="wrap">
       <div class="why__head">
@@ -608,6 +557,24 @@ textarea { min-height: 7rem; resize: vertical; }
           <h3>4,9 w Google</h3>
           <p>Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pour" aria-labelledby="bar-h" data-bg="#0b0b0a">
+    <div class="pour__stage js-pour">
+      <div class="pour__media">
+        <img src="media/pour/01.webp" alt="Barman przelewa składnik koktajlu z jiggera do shakera" width="540" height="960">
+        <canvas aria-hidden="true"></canvas>
+      </div>
+      <div class="pour__text">
+        <p class="eyebrow">Za barem</p>
+        <h2 id="bar-h">Koktajle, o których <em>się gada</em></h2>
+        <div class="pour__lines">
+          <p><strong>Karta na wasz wieczór</strong>Ustalamy z wami kilka pozycji, żeby bar szedł szybko, a nikt nie czekał.</p>
+          <p><strong>Koktajl z nazwą firmy</strong>Przygotujemy autorski koktajl na waszą imprezę. <span class="todo">potwierdzić</span></p>
+          <p><strong>Bezalkoholowe też na poziomie</strong>Lemoniady, kawa Mott, herbaty Ronnefeldt.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -659,6 +626,21 @@ textarea { min-height: 7rem; resize: vertical; }
     </div>
   </section>
 
+  <section class="section" id="karta" aria-labelledby="menu-h" data-bg="#0b0b0a">
+    <div class="wrap menu">
+      <div class="menu__head">
+        <p class="eyebrow">Menu firmowe</p>
+        <h3 id="menu-h">Karta na wasz wieczór</h3>
+      </div>
+      <div class="stack js-stack">
+        <article class="drink" style="--i: 0"><figure><img src="media/coupe-bar-800.webp" srcset="media/coupe-bar-800.webp 800w, media/coupe-bar-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Czerwony koktajl w kryształowym kieliszku na barze" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Klasyk Gwaru</p><h4><span class="todo">nazwa koktajlu</span></h4><p><span class="todo">skład z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
+        <article class="drink" style="--i: 1"><figure><img src="media/spritz-green-800.webp" srcset="media/spritz-green-800.webp 800w, media/spritz-green-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Pomarańczowy koktajl z preclem przy zielonej ścianie" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Na powitanie</p><h4><span class="todo">nazwa koktajlu</span></h4><p><span class="todo">skład z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
+        <article class="drink" style="--i: 2"><figure><img src="media/coupe-tray-800.webp" srcset="media/coupe-tray-800.webp 800w, media/coupe-tray-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Koktajl z anyżem na srebrnej tacy" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Autorski</p><h4><span class="todo">nazwa koktajlu</span></h4><p><span class="todo">skład z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
+        <article class="drink" style="--i: 3"><figure><img src="media/winter-flatlay-800.webp" srcset="media/winter-flatlay-800.webp 800w, media/winter-flatlay-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Grzane wino i gruszkowy grzaniec z cynamonem" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Na wigilię</p><h4>Grzańce w Gwarze</h4><p><span class="todo">warianty z Menu Firmowe GWAR</span></p></div><div class="drink__shade" aria-hidden="true"></div></article>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="pakiety" aria-labelledby="packs-h" data-bg="#0b0b0a">
     <div class="wrap">
       <div class="packs__head">
@@ -705,6 +687,14 @@ textarea { min-height: 7rem; resize: vertical; }
         </article>
       </div>
       <p class="packs__note"><span class="todo">Skład pakietów i ceny do potwierdzenia przez Gwar</span></p>
+    </div>
+  </section>
+
+  <section class="mirror" aria-labelledby="mirror-h" data-bg="#0b0b0a">
+    <div class="mirror__stage js-mirror">
+      <div class="mirror__img"><img src="media/room-brick-1600.webp" srcset="media/room-brick-800.webp 800w, media/room-brick-1600.webp 1600w" sizes="100vw" alt="Sala Gwaru: ceglana ściana, okrągłe lustro i zielona boazeria" width="1067" height="1600" loading="lazy"></div>
+      <div class="mirror__ring" aria-hidden="true"></div>
+      <div class="mirror__text"><p>Zajrzyjcie do środka</p><h2 id="mirror-h">Wasza sala<br>na wieczór</h2></div>
     </div>
   </section>
 
@@ -1068,19 +1058,6 @@ textarea { min-height: 7rem; resize: vertical; }
     });
   });
 
-  // Formats: pinned horizontal scroll on wide screens
-  mm.add('(min-width: 900px) and (prefers-reduced-motion: no-preference)', () => {
-    const trackEl = document.querySelector('.js-track');
-    const dist = () => Math.max(0, trackEl.scrollWidth - document.documentElement.clientWidth);
-    gsap.to(trackEl, {
-      x: () => -dist(), ease: 'none',
-      scrollTrigger: { trigger: '.js-pin', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: 1, invalidateOnRefresh: true },
-    });
-  });
-  // Without the pin (reduced motion), let the row scroll inside itself on wide screens
-  mm.add('(min-width: 900px) and (prefers-reduced-motion: reduce)', () => {
-    document.querySelector('.js-track').parentElement.style.overflowX = 'auto';
-  });
   // Created after the pinned sections so their start/end include the pin spacing
   // Colour wash: <body> blends from one section's colour to the next, driven by the scroll itself.
   // The blend runs while the next section travels from 85% to 30% of the screen height.
@@ -1107,7 +1084,7 @@ textarea { min-height: 7rem; resize: vertical; }
   });
   ScrollTrigger.create({ trigger: '.quote', start: 'top 50%', end: 'bottom 50%', toggleClass: { targets: root, className: 'on-pink' } });
 
-  // Pins were created out of page order (the desktop formats pin sits above the finale): recalculate top to bottom
+  // Pins were created out of page order (the mirror now sits below the pour): recalculate top to bottom
   ScrollTrigger.sort();
   ScrollTrigger.refresh();
 
