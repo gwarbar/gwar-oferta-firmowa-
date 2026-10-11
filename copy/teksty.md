@@ -51,7 +51,7 @@ Opis wideo: Barman nalewa składniki koktajlu do shakera.
 | Wnętrze, które zachęca | Cegła, zielona boazeria, okrągłe lustro i dużo roślin. Nie trzeba dekorować. | Zmien tu zdjecie na: ROOM-PINK |
 | Bar, który nadąża | Koktajle robimy na miejscu. Kartę na wieczór ustalamy z wami. | Tu zdjęcie: BAR-COUNTER |
 | Kazimierz za drzwiami | Mostowa 8, kilka kroków od Kładki Bernatka i bulwarów. Łatwo dojechać, trudno wyjść. |  |
-| 4,9 w Google | Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór. |  |
+| 4,9 w Google | Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór. | Tutaj zdjecie : Zrzut ekranu 2026-10-11 o 13.32.42 załącznik z tego dokumentu, wysrodkuj  |
 
 Opisy zdjęć: Sala Gwaru: ceglana ściana, okrągłe lustro, zielona boazeria · Czerwony koktajl w kryształowym kieliszku na tle baru · Dwie osoby z grzańcami przy zielonym stoliku w ogródku · Kanapa pod oknem otoczona roślinami.
 ## **Za barem (nalewanie)**
@@ -91,7 +91,7 @@ Nazwy i składy czekają na „Menu Firmowe GWAR” z Claude Design.
 | 5 |  |  |  |
 
 Opisy zdjęć: Czerwony koktajl w kryształowym kieliszku na barze · Pomarańczowy koktajl z preclem przy zielonej ścianie · Koktajl z anyżem na srebrnej tacy · Grzane wino i gruszkowy grzaniec z cynamonem.
-## **Pakiety**
+## **Pakiety - TA SEKCJA JEST DO USUNIĘCIA**
   - Nadtytuł: Pakiety
   - Tytuł: **Wybierzcie punkt startu**
   - Wstęp: Ceny są orientacyjne. Ostateczną ofertę wyślemy po zapytaniu, dopasowaną do liczby osób i godzin.
@@ -198,3 +198,4 @@ Wszystkie żółte miejsca ze strony w jednym miejscu. Odhaczajcie, co już maci
   - ☐ Odświeżona ocena i liczba opinii z Google przed mailingiem
 Zamien zdjecia drinkow na zdjecia: 4N0A8444.jpg, 4NoA8356.jpg, BPRO2175.jpg, BPRO2053.jpg, BPRO2248.jpg
 Przy sekcji “Wnętrze, które zachęca”
+\[image\]

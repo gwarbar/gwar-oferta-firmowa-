@@ -359,30 +359,6 @@ html.toc-open .burger span::after { transform: translateY(-6px) rotate(-45deg); 
 body { transition: none; }
 html.wash .marquee, html.wash .space, html.wash .quote, html.wash .contact { background: transparent; }
 
-/* Packages */
-.packs__head { text-align: center; max-width: 720px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); }
-.packs__head h2 { color: var(--pink-text); }
-.packs__head p { color: var(--muted); margin-top: 1rem; }
-.packs__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; align-items: stretch; }
-.pack {
-  border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 2rem 1.6rem; display: flex; flex-direction: column; gap: 1rem;
-  background: var(--surface); position: relative; min-width: 0;
-}
-.pack--featured { background: var(--bottle); border-color: var(--bottle); }
-.pack__tag { position: absolute; top: -.8rem; left: 1.6rem; background: var(--pink); color: #fff; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding: .35em .9em; border-radius: var(--pill); font-weight: 700; }
-.pack h3 { font-size: 2rem; color: var(--cream); }
-.pack__for { color: var(--muted); margin: 0; font-size: .92rem; }
-.pack--featured .pack__for { color: var(--cream); opacity: .8; }
-.pack__price { font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--text); margin: .4rem 0; }
-.pack__price small { font-family: var(--font-body); font-size: .85rem; color: var(--muted); text-transform: none; }
-.pack ul { list-style: none; padding: 1rem 0 0; margin: 0; display: grid; gap: .55rem; border-top: 1px solid var(--line); flex: 1; }
-.pack li { padding-left: 1.5rem; position: relative; color: var(--cream); font-size: .95rem; }
-.pack li::before { content: '✱'; position: absolute; left: 0; color: var(--pink); font-size: .8em; top: .15em; }
-.pack .btn { align-self: flex-start; margin-top: .6rem; }
-.packs__note { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 2rem; }
-@media (max-width: 900px) { .packs__grid { grid-template-columns: 1fr; } }
-
 /* Space */
 .space { background: var(--surface); }
 .space__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
@@ -530,7 +506,6 @@ textarea { min-height: 7rem; resize: vertical; }
     <nav aria-label="Sekcje">
       <a href="#formaty">Okazje</a>
       <a href="#karta">Koktajle</a>
-      <a href="#pakiety">Pakiety</a>
       <a href="#sala">Sala</a>
       <a href="#faq">FAQ</a>
       <a class="btn" href="#zapytanie" data-ev="cta_header">Zapytaj o termin</a>
@@ -601,7 +576,7 @@ textarea { min-height: 7rem; resize: vertical; }
           <p>Mostowa 8, kilka kroków od Kładki Bernatka i bulwarów. Łatwo dojechać, trudno wyjść.</p>
         </article>
         <article class="why__item js-reveal">
-          <figure><img src="media/room-plants-800.webp" srcset="media/room-plants-800.webp 800w, media/room-plants-1600.webp 1600w" sizes="(max-width: 520px) 100vw, 25vw" alt="Kanapa pod oknem otoczona roślinami" loading="lazy" width="800" height="1200"></figure>
+          <figure><img src="media/reviews-49-800.webp" srcset="media/reviews-49-800.webp 800w, media/reviews-49-1600.webp 1080w" sizes="(max-width: 520px) 100vw, 25vw" alt="Ocena 4,9 z 1 153 opinii w Google" loading="lazy" width="800" height="1067"></figure>
           <h3>4,9 w Google</h3>
           <p>Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór.</p>
         </article>
@@ -686,55 +661,6 @@ textarea { min-height: 7rem; resize: vertical; }
         <article class="drink" style="--i: 2"><figure><img src="media/drink-pour-800.webp" srcset="media/drink-pour-800.webp 800w, media/drink-pour-1600.webp 1333w" sizes="(max-width: 700px) 100vw, 45vw" alt="Dolewanie do koktajlu w kieliszku na srebrnej tacy, w tle liście" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><h4>Karta autorska</h4><p>To nasza wizytówka: koktajle, których nie spróbujecie nigdzie indziej. Każda pozycja to efekt pracy naszych barmanów, czyli sezonowe składniki, nieoczywiste połączenia i&nbsp;dopracowany smak.</p></div><div class="drink__shade" aria-hidden="true"></div></article>
         <article class="drink" style="--i: 3"><figure><img src="media/drink-xmas-800.webp" srcset="media/drink-xmas-800.webp 800w, media/drink-xmas-1600.webp 1333w" sizes="(max-width: 700px) 100vw, 45vw" alt="Koktajl z grejpfrutem i rozmarynem na tle choinki ze światełkami" loading="lazy" width="800" height="1200"></figure><div class="drink__body"><p class="drink__kicker">Na wigilię</p><h4>Grzańce i grzane koktajle w Gwarze</h4></div><div class="drink__shade" aria-hidden="true"></div></article>
       </div>
-    </div>
-  </section>
-
-  <section class="section" id="pakiety" aria-labelledby="packs-h" data-bg="#0b0b0a">
-    <div class="wrap">
-      <div class="packs__head">
-        <p class="eyebrow">Pakiety</p>
-        <h2 id="packs-h">Wybierzcie punkt startu</h2>
-        <p>Ceny są orientacyjne. Ostateczną ofertę wyślemy po zapytaniu, dopasowaną do liczby osób i godzin.</p>
-      </div>
-      <div class="packs__grid">
-        <article class="pack js-reveal">
-          <h3>Afterwork</h3>
-          <p class="pack__for">Do ok. 20 osób · 3 godziny</p>
-          <p class="pack__price"><span class="todo">od … zł</span> <small>/ osoba</small></p>
-          <ul>
-            <li>Zarezerwowana strefa w sali</li>
-            <li>Koktajl powitalny</li>
-            <li>Przekąski do stołu</li>
-          </ul>
-          <a class="btn btn--ghost" href="#zapytanie" data-pack="Afterwork">Zapytaj o Afterwork</a>
-        </article>
-        <article class="pack pack--featured js-reveal">
-          <span class="pack__tag">Polecany na wigilię</span>
-          <h3>Wieczór firmowy</h3>
-          <p class="pack__for">20–50 osób · 4 godziny</p>
-          <p class="pack__price"><span class="todo">od … zł</span> <small>/ osoba</small></p>
-          <ul>
-            <li>Cała sala dla waszej grupy</li>
-            <li>Grzańce albo koktajl na powitanie</li>
-            <li>Ustalona karta koktajli</li>
-            <li>Przekąski przez cały wieczór</li>
-          </ul>
-          <a class="btn" href="#zapytanie" data-pack="Wieczór firmowy">Zapytaj o termin</a>
-        </article>
-        <article class="pack js-reveal">
-          <h3>Na wyłączność</h3>
-          <p class="pack__for">Cały lokal · godziny do ustalenia</p>
-          <p class="pack__price"><span class="todo">od … zł</span> <small>/ wieczór</small></p>
-          <ul>
-            <li>Gwar zamknięty dla innych gości</li>
-            <li>Własna karta i koktajl z nazwą firmy</li>
-            <li>Muzyka pod wasz zespół</li>
-            <li>Patio w sezonie</li>
-          </ul>
-          <a class="btn btn--ghost" href="#zapytanie" data-pack="Na wyłączność">Zapytaj o wyłączność</a>
-        </article>
-      </div>
-      <p class="packs__note"><span class="todo">Skład pakietów i ceny do potwierdzenia przez Gwar</span></p>
     </div>
   </section>
 
@@ -854,7 +780,7 @@ textarea { min-height: 7rem; resize: vertical; }
             <input type="radio" name="okazja" id="o4" value="Coś innego"><label for="o4">Coś innego</label>
           </div>
         </fieldset>
-        <div class="field field--full"><label for="f-msg">Coś jeszcze?</label><textarea id="f-msg" name="wiadomosc" placeholder="Godziny, budżet, pakiet, który was interesuje…"></textarea></div>
+        <div class="field field--full"><label for="f-msg">Coś jeszcze?</label><textarea id="f-msg" name="wiadomosc" placeholder="Godziny, budżet, pomysł na wieczór…"></textarea></div>
         <p class="error" id="f-error" hidden></p>
         <div class="form__foot">
           <small>Wysyłając zapytanie, zgadzacie się na kontakt w sprawie oferty. <span class="todo">link do polityki prywatności</span></small>
@@ -890,7 +816,6 @@ textarea { min-height: 7rem; resize: vertical; }
   <ol>
     <li><a href="#formaty">Okazje</a></li>
     <li><a href="#karta">Koktajle</a></li>
-    <li><a href="#pakiety">Pakiety</a></li>
     <li><a href="#sala">Sala</a></li>
     <li><a href="#jak-to-dziala">Jak to działa</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -921,12 +846,6 @@ textarea { min-height: 7rem; resize: vertical; }
   const onScroll = () => top.classList.toggle('is-solid', window.scrollY > 40);
   onScroll();
   addEventListener('scroll', onScroll, { passive: true });
-
-  /* Preselect occasion when a package button is used */
-  document.querySelectorAll('[data-pack]').forEach((a) => a.addEventListener('click', () => {
-    const msg = document.getElementById('f-msg');
-    if (!msg.value) msg.value = `Interesuje nas pakiet: ${a.dataset.pack}. `;
-  }));
 
   /* Lead form: validate, then build a ready-to-send message (no backend yet) */
   const form = document.getElementById('lead');

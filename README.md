@@ -27,7 +27,6 @@ Podgląd lokalnie: `python3 -m http.server 8090` → http://localhost:8090/
 ## Do uzupełnienia (żółte znaczniki na stronie)
 
 - karta koktajli: nazwy i składy z „Menu Firmowe GWAR” (Claude Design)
-- pakiety: skład i ceny
 - e-mail do ofert, `LEAD_EMAIL` w skrypcie na dole `index.html` (formularz składa gotową wiadomość do wysłania mailem; brak backendu)
 - czas odpowiedzi, zaliczka, faktura VAT, catering, obsługa na eventach, tort/dekoracje, warsztaty koktajlowe
 - link do polityki prywatności
