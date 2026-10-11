@@ -652,8 +652,7 @@ textarea { min-height: 7rem; resize: vertical; }
   <section class="section" id="karta" aria-labelledby="menu-h" data-bg="#0b0b0a">
     <div class="wrap menu">
       <div class="menu__head">
-        <p class="eyebrow">Menu firmowe</p>
-        <h3 id="menu-h">Karta na wasz wieczór</h3>
+        <h3 id="menu-h">Wasz wieczór</h3>
       </div>
       <div class="stack js-stack">
         <article class="drink" style="--i: 0"><figure><img src="media/BPRO2100-800.webp" srcset="media/BPRO2100-800.webp 800w, media/BPRO2100-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" alt="Cztery kolorowe koktajle w kieliszkach w dłoniach gości, w tle liście winobluszczu" loading="lazy" width="800" height="533"></figure><div class="drink__body"><h4>Wasze wydarzenie zaczyna się u nas</h4><p>Firmowa integracja, spotkanie z&nbsp;klientami, urodziny czy wieczór panieński: każdą okazję zamieniamy w&nbsp;wieczór, o&nbsp;którym się mówi. Zapewniamy klimatyczne wnętrze, profesjonalną obsługę i&nbsp;koktajle, które same rozkręcają atmosferę. Wy zapraszacie gości, a&nbsp;my zajmujemy się resztą.</p></div><div class="drink__shade" aria-hidden="true"></div></article>
@@ -760,7 +759,7 @@ textarea { min-height: 7rem; resize: vertical; }
         <p class="lead" style="margin-top: 1.4rem">Podajcie datę i liczbę osób. Odezwiemy się z propozycją.</p>
         <div class="contact__direct">
           <div><span>Telefon</span><a href="tel:+48453433852" data-ev="click_to_call">+48 453 433 852</a></div>
-          <div><span>E-mail</span><b><span class="todo">adres do ofert firmowych</span></b></div>
+          <div><span>E-mail</span><a href="mailto:gwar@gwar.bar" data-ev="click_to_mail">gwar@gwar.bar</a></div>
           <div><span>Adres</span><b>Mostowa 8, Kraków</b></div>
         </div>
       </div>
@@ -783,7 +782,7 @@ textarea { min-height: 7rem; resize: vertical; }
         <div class="field field--full"><label for="f-msg">Coś jeszcze?</label><textarea id="f-msg" name="wiadomosc" placeholder="Godziny, budżet, pomysł na wieczór…"></textarea></div>
         <p class="error" id="f-error" hidden></p>
         <div class="form__foot">
-          <small>Wysyłając zapytanie, zgadzacie się na kontakt w sprawie oferty. <span class="todo">link do polityki prywatności</span></small>
+          <small>Wysyłając zapytanie, zgadzacie się na kontakt w sprawie oferty.</small>
           <button class="btn" type="submit">Wyślij zapytanie</button>
         </div>
         <div class="done" id="f-done" hidden>
@@ -805,7 +804,7 @@ textarea { min-height: 7rem; resize: vertical; }
   <div class="wrap foot__in">
     <span class="logo" role="img" aria-label="Bar Gwar"></span>
     <p style="margin: 0">Bar Gwar · Mostowa 8, 31-061 Kraków · <a href="tel:+48453433852">+48 453 433 852</a></p>
-    <p style="margin: 0"><a href="https://bar.gwar.bar/" target="_blank" rel="noopener">bar.gwar.bar</a></p>
+    <p style="margin: 0"><a href="mailto:gwar@gwar.bar">gwar@gwar.bar</a></p>
   </div>
 </footer>
 
@@ -839,7 +838,7 @@ textarea { min-height: 7rem; resize: vertical; }
 <script>
 (() => {
   // Adres, na który trafiają zapytania z formularza (mailto). DO UZUPEŁNIENIA.
-  const LEAD_EMAIL = '';
+  const LEAD_EMAIL = 'gwar@gwar.bar';
 
   /* Header: solid after leaving the hero */
   const top = document.getElementById('top');

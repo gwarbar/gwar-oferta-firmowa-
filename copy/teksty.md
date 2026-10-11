@@ -78,8 +78,8 @@ Opis zdjęcia: Barman przelewa składnik koktajlu z jiggera do shakera.
 
 Opisy zdjęć: Grzane wino w szklance na tle pomarańczy · Dłoń z koktajlem i preclem w kieliszku na tle zielonej ściany · Pusta sala Gwaru ze stolikami, ceglaną ścianą i lustrem · Koktajl z anyżem na srebrnej tacy.
 ## **Karta koktajli**
-  - Nadtytuł: Menu firmowe
-  - Tytuł: **Karta na wasz wieczór**
+  - Nadtytuł: 
+  - Tytuł: **Wasz wieczór**
 Nazwy i składy czekają na „Menu Firmowe GWAR” z Claude Design.
 |  |  |  |  |
 | :- | :- | :- | :- |
@@ -161,7 +161,7 @@ Ocenę i liczbę opinii trzeba odświeżyć z Profilu Firmy Google przed wysłan
   - Nadtytuł: Zapytanie
   - Tytuł: **Zarezerwujmy wam termin**
   - Wstęp: Podajcie datę i liczbę osób. Odezwiemy się z propozycją.
-  - Kontakt: Telefon +48 453 433 852 · E-mail **\[DO UZUPEŁNIENIA: adres do ofert firmowych\]** · Adres Mostowa 8, Kraków
+  - Kontakt: Telefon +48 453 433 852 · E-mail [**GWAR@GWAR.BAR**](mailto:GWAR@GWAR.BAR) · Adres Mostowa 8, Kraków
 |  |  |  |
 | :- | :- | :- |
 | Pole | Etykieta | Podpowiedź |
@@ -174,14 +174,14 @@ Ocenę i liczbę opinii trzeba odświeżyć z Profilu Firmy Google przed wysłan
 | Okazja | Okazja | Wigilia firmowa · Integracja · Na wyłączność · Coś innego |
 | Wiadomość | Coś jeszcze? | Godziny, budżet, pakiet, który was interesuje… |
 
-  - Zgoda pod formularzem: Wysyłając zapytanie, zgadzacie się na kontakt w sprawie oferty. **\[DO UZUPEŁNIENIA: link do polityki prywatności\]**
+  - Zgoda pod formularzem: Wysyłając zapytanie, zgadzacie się na kontakt w sprawie oferty. 
   - Przycisk: Wyślij zapytanie
   - Błąd: Uzupełnij: \[lista brakujących pól\].
   - Po wysłaniu: **Zapytanie gotowe** – Wyślij je mailem albo skopiuj i wklej, gdzie wolisz. Szybciej będzie telefonicznie: +48 453 433 852.
   - Przyciski po wysłaniu: Otwórz w poczcie · Kopiuj treść (po kliknięciu: Skopiowano)
   - Temat maila: Zapytanie firmowe: \[okazja\], \[liczba\] os.
 **Stopka**
-Bar Gwar · Mostowa 8, 31-061 Kraków · +48 453 433 852 · bar.gwar.bar
+Bar Gwar · Mostowa 8, 31-061 Kraków · +48 453 433 852 · gwar@gwar.bar
 ## **Do uzupełnienia**
 Wszystkie żółte miejsca ze strony w jednym miejscu. Odhaczajcie, co już macie.
   - ☐ Nazwy i składy 3 koktajli + warianty grzańców (z „Menu Firmowe GWAR”)
