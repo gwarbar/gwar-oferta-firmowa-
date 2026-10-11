@@ -17,7 +17,7 @@ Te teksty widać w karcie przeglądarki i w podglądzie linku (mail, Messenger, 
 ## **Nagłówek, spis sekcji i kieliszek**
 **Nagłówek** (na górze każdej strony)
   - Obok logo: dla firm
-  - Menu: Okazje · Koktajle · Pakiety · Sala · FAQ
+  - Menu: Okazje · Wasz wieczór · Pakiety · Sala · FAQ
   - Przycisk: Zapytaj o termin
 **Spis sekcji** (otwiera się z kieliszka w rogu albo z hamburgera na telefonie)
   - Nagłówek panelu: Przejdź do
@@ -30,7 +30,7 @@ Wigilie firmowe · Integracje · Wynajem na wyłączność · Koktajle robione n
   - Nadtytuł: Koktajle dla firm · Kazimierz, Mostowa 8
   - Tytuł: **Zróbcie trochę Gwaru**
   - Podtytuł: Firmowy wieczór zbudowany wokół koktajli. Wigilie, integracje i Gwar na wyłączność w barze przy Kładce Bernatka.
-  - Przyciski: Zapytaj o termin · Zobacz kartę
+  - Przyciski: Zapytaj o termin · MENU
   - Naklejka na wideo: Grudzień / terminy schodzą najszybciej (tutaj video zmień na: 3 film.mp4)
 **Liczby pod hero**
 |  |  |
@@ -50,7 +50,7 @@ Opis wideo: Barman nalewa składniki koktajlu do shakera.
 | Kafelek | Tekst |  |
 | Wnętrze, które zachęca | Cegła, zielona boazeria, okrągłe lustro i dużo roślin. Nie trzeba dekorować. | Zmień tu zdjecie na: ROOM-PINK |
 | Bar, który nadąża | Koktajle robimy na miejscu. Kartę na wieczór ustalamy z wami. | Tu zdjęcie: BAR-COUNTER |
-| Kazimierz za drzwiami | Mostowa 8, kilka kroków od Kładki Bernatka i bulwarów. Łatwo dojechać, trudno wyjść. |  |
+| Kazimierz za drzwiami | Mostowa 8, kilka kroków od Kładki Bernatka i bulwarów. Łatwo dojechać, trudno wyjść. | Tu zdjęcie: IMG\_2603 z załącznika poniżej |
 | 4,9 w Google | Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór. | Tutaj zdjecie : Zrzut ekranu 2026-10-11 o 13.32.42 załącznik z tego dokumentu, wyśrodkuj  |
 
 Opisy zdjęć: Sala Gwaru: ceglana ściana, okrągłe lustro, zielona boazeria · Czerwony koktajl w kryształowym kieliszku na tle baru · Dwie osoby z grzańcami przy zielonym stoliku w ogródku · Kanapa pod oknem otoczona roślinami.
@@ -116,9 +116,11 @@ Pod pakietami: **\[DO UZUPEŁNIENIA: skład pakietów i ceny do potwierdzenia pr
 | Pole | Wartość | Dopisek |
 | Sala | do 50 osób | stolikami, z miejscem przy barze |
 | Patio | ok. 25 osób | w sezonie, do 22:00 |
-| Ogródek od ulicy | 8 stolików | w sezonie, bez rezerwacji |
+| Ogródek od ulicy | 26 miejsc | w sezonie, bez rezerwacji |
 | Adres | Mostowa 8 | Kazimierz, przy Kładce Bernatka |
 
+ 
+W tej sekcji sa 3 zdjęcia, najwieksze zamien na: ROOM-PINK, kolejne zdjęcie (wyżej) zmien na: BAR-COUNTER, trzecie zdjecie zostaje jakie jest 
 Pod tabelką: Wi-Fi za darmo, psy mile widziane, płatność kartą i telefonem. Przy wejściu jest próg, toaleta jest w lokalu.
 Opisy zdjęć: Sala Gwaru: ceglana ściana, okrągłe lustro i zielona boazeria · Widok na całą salę: stoliki przy zielonej boazerii i wejście w głębi · Kanapa i stolik pod półką z roślinami · Stolik z czerwonymi gałązkami w butelce i kartą grzańców.
 ## **Opinie (różowa sekcja z G)**
@@ -133,8 +135,8 @@ Ocenę i liczbę opinii trzeba odświeżyć z Profilu Firmy Google przed wysłan
   - Nadtytuł: Jak to działa
   - Tytuł: **Od zapytania do imprezy**
 1.  **Zapytanie** – Wypełniacie krótki formularz albo dzwonicie. Wystarczy data, liczba osób i okazja.
-2.  **Propozycja** – Odsyłamy ofertę z kartą i ceną **\[DO UZUPEŁNIENIA: w ciągu … godzin\]**.
-3.  **Potwierdzenie** – Rezerwujemy termin po wpłacie zaliczki **\[DO UZUPEŁNIENIA: wysokość zaliczki\]**.
+2.  **Propozycja** – Odsyłamy ofertę z kartą i ceną 
+3.  **Potwierdzenie** – Rezerwujemy termin po wpłacie zaliczki
 4.  **Wieczór** – Przychodzicie. Resztą zajmujemy się my.
 **FAQ**
   - Nadtytuł: FAQ
@@ -198,4 +200,4 @@ Wszystkie żółte miejsca ze strony w jednym miejscu. Odhaczajcie, co już maci
   - ☐ Odświeżona ocena i liczba opinii z Google przed mailingiem
 Zamien zdjecia drinkow na zdjecia: 4N0A8444.jpg, 4NoA8356.jpg, BPRO2175.jpg, BPRO2053.jpg, BPRO2248.jpg
 Przy sekcji “Wnętrze, które zachęca”
-\[image\]
+\[image\]\[image\]
