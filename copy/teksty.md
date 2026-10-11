@@ -84,10 +84,10 @@ Nazwy i składy czekają na „Menu Firmowe GWAR” z Claude Design.
 |  |  |  |  |
 | :- | :- | :- | :- |
 | Karta | Etykieta | Nazwa | Skład |
-| 1 | Wasze wydarzenie zaczyna się u nas | Firmowa integracja, spotkanie z klientami, urodziny czy wieczór panieński: każdą okazję zamieniamy w wieczór, o którym się mówi. Zapewniamy klimatyczne wnętrze, profesjonalną obsługę i koktajle, które same rozkręcają atmosferę. Wy zapraszacie gości, a my zajmujemy się resztą. |  |
-| 2 | Koktajle, po które się wraca | Każdy koktajl robimy od zera: świeże soki wyciskane na miejscu, domowe syropy i alkohole, które wybieramy z rozmysłem. W karcie znajdziesz klasyki w najlepszym wydaniu i autorskie kompozycje, których nie spróbujesz nigdzie indziej. Nie wiesz, co wybrać? Powiedz barmanowi, na co masz ochotę, a przygotuje drinka specjalnie dla Ciebie. |  |
-| 3 | Karta autorska | To nasza wizytówka: koktajle, których nie spróbujecie nigdzie indziej. Każda pozycja to efekt pracy naszych barmanów, czyli sezonowe składniki, nieoczywiste połączenia i dopracowany smak. |  |
-| 4 | Na wigilię | Grzańce i grzane koktajle w Gwarze |  |
+| 1 | Wasze wydarzenie zaczyna się u nas | Firmowa integracja, spotkanie z klientami, urodziny czy wieczór panieński: każdą okazję zamieniamy w wieczór, o którym się mówi. Zapewniamy klimatyczne wnętrze, profesjonalną obsługę i koktajle, które same rozkręcają atmosferę. Wy zapraszacie gości, a my zajmujemy się resztą. | Tu zdjecie: BPRO22100.jpg |
+| 2 | Koktajle, po które się wraca | Każdy koktajl robimy od zera: świeże soki wyciskane na miejscu, domowe syropy i alkohole, które wybieramy z rozmysłem. W karcie znajdziesz klasyki w najlepszym wydaniu i autorskie kompozycje, których nie spróbujesz nigdzie indziej. Nie wiesz, co wybrać? Powiedz barmanowi, na co masz ochotę, a przygotuje drinka specjalnie dla Ciebie. | Tu zdjecie: 4N0A8636.jpg |
+| 3 | Karta autorska | To nasza wizytówka: koktajle, których nie spróbujecie nigdzie indziej. Każda pozycja to efekt pracy naszych barmanów, czyli sezonowe składniki, nieoczywiste połączenia i dopracowany smak. | Tu zdjecie: 4N0A8598.jpg |
+| 4 | Na wigilię | Grzańce i grzane koktajle w Gwarze | Tu zdjecie: 4N0A8505.jpg |
 | 5 |  |  |  |
 
 Opisy zdjęć: Czerwony koktajl w kryształowym kieliszku na barze · Pomarańczowy koktajl z preclem przy zielonej ścianie · Koktajl z anyżem na srebrnej tacy · Grzane wino i gruszkowy grzaniec z cynamonem.
