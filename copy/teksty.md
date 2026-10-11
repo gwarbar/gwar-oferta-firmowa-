@@ -31,7 +31,7 @@ Wigilie firmowe · Integracje · Wynajem na wyłączność · Koktajle robione n
   - Tytuł: **Zróbcie trochę Gwaru**
   - Podtytuł: Firmowy wieczór zbudowany wokół koktajli. Wigilie, integracje i Gwar na wyłączność w barze przy Kładce Bernatka.
   - Przyciski: Zapytaj o termin · Zobacz kartę
-  - Naklejka na wideo: Grudzień / terminy schodzą najszybciej
+  - Naklejka na wideo: Grudzień / terminy schodzą najszybciej (tutaj video zmień na: 3 film.mp4)
 **Liczby pod hero**
 |  |  |
 | :- | :- |
@@ -48,10 +48,10 @@ Opis wideo: Barman nalewa składniki koktajlu do shakera.
 |  |  |  |
 | :- | :- | :- |
 | Kafelek | Tekst |  |
-| Wnętrze, które zachęca | Cegła, zielona boazeria, okrągłe lustro i dużo roślin. Nie trzeba dekorować. | Zmien tu zdjecie na: ROOM-PINK |
+| Wnętrze, które zachęca | Cegła, zielona boazeria, okrągłe lustro i dużo roślin. Nie trzeba dekorować. | Zmień tu zdjecie na: ROOM-PINK |
 | Bar, który nadąża | Koktajle robimy na miejscu. Kartę na wieczór ustalamy z wami. | Tu zdjęcie: BAR-COUNTER |
 | Kazimierz za drzwiami | Mostowa 8, kilka kroków od Kładki Bernatka i bulwarów. Łatwo dojechać, trudno wyjść. |  |
-| 4,9 w Google | Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór. | Tutaj zdjecie : Zrzut ekranu 2026-10-11 o 13.32.42 załącznik z tego dokumentu, wysrodkuj  |
+| 4,9 w Google | Ponad tysiąc sto opinii gości. Wiemy, jak zrobić dobry wieczór. | Tutaj zdjecie : Zrzut ekranu 2026-10-11 o 13.32.42 załącznik z tego dokumentu, wyśrodkuj  |
 
 Opisy zdjęć: Sala Gwaru: ceglana ściana, okrągłe lustro, zielona boazeria · Czerwony koktajl w kryształowym kieliszku na tle baru · Dwie osoby z grzańcami przy zielonym stoliku w ogródku · Kanapa pod oknem otoczona roślinami.
 ## **Za barem (nalewanie)**
@@ -60,7 +60,7 @@ Opisy zdjęć: Sala Gwaru: ceglana ściana, okrągłe lustro, zielona boazeria �
 |  |  |
 | :- | :- |
 | Punkt | Tekst |
-| Karta na wasz wieczór | Ustalamy z wami kilka pozycji, żeby bar szedł szybko, a nikt nie czekał. |
+| Karta skomponowana dla Was | Wspólnie układamy przemyślaną kartę. Dzięki temu obsługa jest płynna, a każdy gość dostaje swój napój bez czekania. |
 | Koktajl z nazwą firmy | Przygotujemy autorski koktajl na waszą imprezę.  |
 | Bezalkoholowe też na poziomie | Koktajle, piwa, lemoniady, herbaty i kawy. |
 

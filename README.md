@@ -12,7 +12,7 @@ ta strona jest od niego niezależna, ma `noindex` i nie jest podpinana pod Googl
   finał „GWAR” z wideo w literach, w które się wlatuje, nalewanie sterowane scrollem (48 klatek w `media/pour/` na canvasie),
   stos kart koktajli (sticky + GSAP), płynna zmiana koloru tła między sekcjami, reveal'e w CSS `animation-timeline: view()`
   (fallback GSAP); `ScrollTrigger.config({ ignoreMobileResize: true })` przeciw skokom paska adresu w Safari
-- `media/` – zdjęcia z sesji (Drive „photo”) w WebP 800/1600 px, `bar-loop.mp4` – 4 klipy z barmanem (Drive „video”)
+- `media/` – zdjęcia z sesji (Drive „photo”) w WebP 800/1600 px, `hero-wine.mp4` – wideo w hero (butelki i nalewanie wina, „3 film”), `bar-loop.mp4` – 4 klipy z barmanem w finale (Drive „video”)
 - krój Jean-Luc i kolory marki jak na landingu; logotyp z `logo.svg` (maska CSS, także w finale)
 - intro przy pierwszym wejściu: promienie G (`g-top`, wstawione inline) wystrzeliwują i odlatują do logo w nagłówku
   (flaga `gwar-intro` w localStorage, pomijane przy „ogranicz ruch”); szklanka w rogu jako pasek postępu scrolla;
