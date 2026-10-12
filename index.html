@@ -359,6 +359,18 @@ html.toc-open .burger span::after { transform: translateY(-6px) rotate(-45deg); 
 body { transition: none; }
 html.wash .marquee, html.wash .space, html.wash .quote, html.wash .contact { background: transparent; }
 
+/* Bar menu: bar.gwar.bar/menu.html in a modal, its own top bar cropped */
+.menu-modal { width: min(560px, 100vw); height: min(860px, 100svh); max-width: none; max-height: none; padding: 0; border: 1px solid var(--line); border-radius: 20px; background: #000; color: var(--text); overflow: hidden; box-shadow: 0 30px 90px rgba(0, 0, 0, .6); }
+.menu-modal::backdrop { background: rgba(0, 0, 0, .72); backdrop-filter: blur(6px); }
+.menu-modal__bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem .7rem .7rem 1.2rem; border-bottom: 1px solid var(--line); background: var(--surface); }
+.menu-modal__bar p { margin: 0; font-family: var(--font-display); text-transform: uppercase; font-size: 1.3rem; color: var(--pink-text); }
+.menu-modal__close { width: 40px; height: 40px; border-radius: var(--pill); border: 1px solid var(--line); background: transparent; color: var(--cream); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.menu-modal__close:hover { border-color: var(--cream); }
+.menu-modal__frame { position: relative; height: calc(100% - 57px); overflow: hidden; }
+.menu-modal__frame iframe { position: absolute; left: 0; top: -76px; width: 100%; height: calc(100% + 76px); border: 0; background: #000; }
+html.menu-open { overflow: hidden; }
+@media (max-width: 600px) { .menu-modal { width: 100vw; height: 100svh; border-radius: 0; border: 0; } }
+
 /* Space */
 .space { background: var(--surface); }
 .space__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
@@ -524,7 +536,7 @@ textarea { min-height: 7rem; resize: vertical; }
         <p class="lead hero__sub">Firmowy wieczór zbudowany wokół koktajli. Wigilie, integracje i Gwar na wyłączność w barze przy Kładce Bernatka.</p>
         <div class="hero__ctas">
           <a class="btn" href="#zapytanie" data-ev="cta_hero">Zapytaj o termin</a>
-          <a class="btn btn--ghost" href="#karta">MENU</a>
+          <a class="btn btn--ghost" href="#karta" data-menu-open>MENU</a>
         </div>
       </div>
       <div class="hero__media">
@@ -680,7 +692,7 @@ textarea { min-height: 7rem; resize: vertical; }
         <dl class="specs">
           <div><dt>Sala</dt><dd>do 50 osób<small>stolikami, z miejscem przy barze</small></dd></div>
           <div><dt>Patio</dt><dd>ok. 25 osób<small>w sezonie, do 22:00</small></dd></div>
-          <div><dt>Ogródek od ulicy</dt><dd>26 miejsc<small>w sezonie, bez rezerwacji</small></dd></div>
+          <div><dt>Ogródek od ulicy</dt><dd>26 miejsc</dd></div>
           <div><dt>Adres</dt><dd>Mostowa 8<small>Kazimierz, przy Kładce Bernatka</small></dd></div>
         </dl>
         <p style="color: var(--muted); font-size: .9rem; margin-top: 1.2rem">Wi-Fi za darmo, psy mile widziane, płatność kartą i telefonem. Przy wejściu jest próg, toaleta jest w lokalu.</p>
@@ -808,6 +820,11 @@ textarea { min-height: 7rem; resize: vertical; }
   </div>
 </footer>
 
+<dialog class="menu-modal" id="menu-modal" aria-labelledby="menu-modal-h">
+  <div class="menu-modal__bar"><p id="menu-modal-h">Menu baru</p><button class="menu-modal__close" type="button" aria-label="Zamknij menu">&times;</button></div>
+  <div class="menu-modal__frame"><iframe title="Menu Bar Gwar" data-src="https://bar.gwar.bar/menu.html" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe></div>
+</dialog>
+
 <div class="toc-backdrop js-toc-close" aria-hidden="true"></div>
 <nav class="toc" id="toc" aria-label="Spis sekcji">
   <div class="toc__head"><p class="toc__title">Przejdź do</p><p class="toc__drunk">Wypite: <b class="js-drunk">0%</b></p></div>
@@ -839,6 +856,29 @@ textarea { min-height: 7rem; resize: vertical; }
 (() => {
   // Adres, na który trafiają zapytania z formularza (mailto). DO UZUPEŁNIENIA.
   const LEAD_EMAIL = 'gwar@gwar.bar';
+
+  /* Bar menu modal: bar.gwar.bar/menu.html in a sandboxed iframe. The sandbox blocks new tabs
+     and leaving this page; any navigation inside the frame (a link to another page of
+     bar.gwar.bar) fires another load, and we send the frame straight back to the menu. */
+  const menuModal = document.getElementById('menu-modal');
+  const menuFrame = menuModal.querySelector('iframe');
+  let menuLoaded = false;
+  menuFrame.addEventListener('load', () => {
+    if (!menuLoaded) { menuLoaded = true; return; }
+    menuLoaded = false;
+    menuFrame.src = menuFrame.dataset.src;
+  });
+  const closeMenu = () => menuModal.close();
+  menuModal.addEventListener('close', () => document.documentElement.classList.remove('menu-open'));
+  menuModal.querySelector('.menu-modal__close').addEventListener('click', closeMenu);
+  menuModal.addEventListener('click', (e) => { if (e.target === menuModal) closeMenu(); });
+  document.querySelectorAll('[data-menu-open]').forEach((a) => a.addEventListener('click', (e) => {
+    if (typeof menuModal.showModal !== 'function') return; // old browsers: plain link to the cocktail section
+    e.preventDefault();
+    if (!menuFrame.getAttribute('src')) menuFrame.src = menuFrame.dataset.src;
+    menuModal.showModal();
+    document.documentElement.classList.add('menu-open');
+  }));
 
   /* Header: solid after leaving the hero */
   const top = document.getElementById('top');

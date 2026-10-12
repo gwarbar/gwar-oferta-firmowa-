@@ -84,7 +84,7 @@ Nazwy i składy czekają na „Menu Firmowe GWAR” z Claude Design.
 |  |  |  |  |
 | :- | :- | :- | :- |
 | Karta | Etykieta | Nazwa | Skład |
-| 1 | Wasze wydarzenie zaczyna się u nas | Firmowa integracja, spotkanie z klientami, urodziny czy wieczór panieński: każdą okazję zamieniamy w wieczór, o którym się mówi. Zapewniamy klimatyczne wnętrze, profesjonalną obsługę i koktajle, które same rozkręcają atmosferę. Wy zapraszacie gości, a my zajmujemy się resztą. | Tu zdjecie: BPRO22100.jpg |
+| 1 | Wasze wydarzenie zaczyna się u nas | Firmowa integracja, spotkanie z klientami, urodziny czy wieczór panieński: każdą okazję zamieniamy w wieczór, o którym się mówi. Zapewniamy klimatyczne wnętrze, profesjonalną obsługę i koktajle, które same rozkręcają atmosferę. Wy zapraszacie gości, a my zajmujemy się resztą. | Tu zdjecie: BPRO2100.jpg |
 | 2 | Koktajle, po które się wraca | Każdy koktajl robimy od zera: świeże soki wyciskane na miejscu, domowe syropy i alkohole, które wybieramy z rozmysłem. W karcie znajdziesz klasyki w najlepszym wydaniu i autorskie kompozycje, których nie spróbujesz nigdzie indziej. Nie wiesz, co wybrać? Powiedz barmanowi, na co masz ochotę, a przygotuje drinka specjalnie dla Ciebie. | Tu zdjecie: 4N0A8636.jpg |
 | 3 | Karta autorska | To nasza wizytówka: koktajle, których nie spróbujecie nigdzie indziej. Każda pozycja to efekt pracy naszych barmanów, czyli sezonowe składniki, nieoczywiste połączenia i dopracowany smak. | Tu zdjecie: 4N0A8598.jpg |
 | 4 | Na wigilię | Grzańce i grzane koktajle w Gwarze | Tu zdjecie: 4N0A8505.jpg |
@@ -116,7 +116,7 @@ Pod pakietami: **\[DO UZUPEŁNIENIA: skład pakietów i ceny do potwierdzenia pr
 | Pole | Wartość | Dopisek |
 | Sala | do 50 osób | stolikami, z miejscem przy barze |
 | Patio | ok. 25 osób | w sezonie, do 22:00 |
-| Ogródek od ulicy | 26 miejsc | w sezonie, bez rezerwacji |
+| Ogródek od ulicy | 26 miejsc |  |
 | Adres | Mostowa 8 | Kazimierz, przy Kładce Bernatka |
 
  
