@@ -56,7 +56,7 @@ Opis wideo: Barman nalewa składniki koktajlu do shakera.
 Opisy zdjęć: Sala Gwaru: ceglana ściana, okrągłe lustro, zielona boazeria · Czerwony koktajl w kryształowym kieliszku na tle baru · Dwie osoby z grzańcami przy zielonym stoliku w ogródku · Kanapa pod oknem otoczona roślinami.
 ## **Za barem (nalewanie)**
   - Nadtytuł: Za barem
-  - Tytuł: **Koktajle, o których się gada**
+  - Tytuł: **Koktajle, o których się mówi**
 |  |  |
 | :- | :- |
 | Punkt | Tekst |
@@ -145,11 +145,11 @@ Ocenę i liczbę opinii trzeba odświeżyć z Profilu Firmy Google przed wysłan
 | :- | :- |
 | Pytanie | Odpowiedź |
 | Ile osób się zmieści? | W sali do 50 osób. W sezonie dochodzi patio na około 25 osób (do 22:00). |
-| Czy wystawiacie fakturę VAT? | **\[DO UZUPEŁNIENIA\]** |
-| Jak wygląda zaliczka i płatność? | **\[DO UZUPEŁNIENIA: wysokość zaliczki, termin, płatność przelewem / kartą\]** |
-| Czy jest jedzenie? | Na co dzień mamy przekąski: oliwki, nachosy i inne drobne rzeczy do stolika. **\[DO UZUPEŁNIENIA: catering na większe eventy: tak / nie, z kim\]** |
-| Czy na evencie jest obsługa przy stolikach? | Na co dzień zamawia się przy barze. **\[DO UZUPEŁNIENIA: jak jest na eventach zamkniętych?\]** |
-| Możemy przynieść tort albo dekoracje? | **\[DO UZUPEŁNIENIA\]** |
+| Czy wystawiacie fakturę VAT? | **Faktura na usługe gastronomiczna ** |
+| Jak wygląda zaliczka i płatność? | **Przed potwierdzeniem rezerwacji pobieramy zaliczkę w wspólnie ustalonej wysokości. Odliczamy ją od końcowego rachunku. Pozostałą kwotę można zapłacić na miejscu albo przelewem na podstawie faktury VAT z odroczonym terminem płatności.** |
+| Czy jest jedzenie? | Na co dzień mamy przekąski: oliwki, nachosy i inne drobne rzeczy do stolika. Przy rezerwacjach firmowych możemy zapewnić catering dzięki współpracy z zaprzyjaźnioną restauracją. Menu ustalamy indywidualnie, zależnie od charakteru wydarzenia i liczby gości. |
+| Czy na evencie jest obsługa przy stolikach?  | Na co dzień zamawia się przy barze. **\[DO UZUPEŁNIENIA: jak jest na eventach zamkniętych?\]: TO PYTANIE JEST DO USUNIECIA** |
+| Możemy przynieść tort albo dekoracje? | **Tak, możecie przynieść zarówno tort, jak i dekoracje. Dajcie nam znać przy rezerwacji, a pomożemy wszystko przygotować na miejscu.** |
 | Czy lokal jest dostępny dla wózków? | Niestety nie, przy wejściu jest próg. Toaleta jest w lokalu. |
 | Jak szybko trzeba rezerwować grudzień? | Im wcześniej, tym lepiej. Piątki i soboty w grudniu znikają jako pierwsze, więc zapytajcie o termin od razu. |
 
@@ -181,7 +181,7 @@ Ocenę i liczbę opinii trzeba odświeżyć z Profilu Firmy Google przed wysłan
   - Przyciski po wysłaniu: Otwórz w poczcie · Kopiuj treść (po kliknięciu: Skopiowano)
   - Temat maila: Zapytanie firmowe: \[okazja\], \[liczba\] os.
 **Stopka**
-Bar Gwar · Mostowa 8, 31-061 Kraków · +48 453 433 852 · gwar@gwar.bar
+Bar Gwar · Mostowa 8, 31-061 Kraków · +48 884 374 607 · gwar@gwar.bar
 ## **Do uzupełnienia**
 Wszystkie żółte miejsca ze strony w jednym miejscu. Odhaczajcie, co już macie.
   - ☐ Nazwy i składy 3 koktajli + warianty grzańców (z „Menu Firmowe GWAR”)
