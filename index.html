@@ -103,6 +103,8 @@ h3 { font-size: var(--step-2); }
 .btn:hover { border-color: var(--fill); color: #fff; transform: translateY(-2px); }
 .btn--ghost { --fill: var(--cream); background: transparent; border-color: var(--line); color: var(--cream); }
 .btn--ghost:hover { color: var(--ink); }
+.btn--icon { padding: 1.02em; justify-content: center; }
+.btn--icon svg { width: 1.4em; height: 1.4em; }
 
 /* Intro: the radiating G bursts open once per visitor, then shrinks into the header logo */
 .intro { display: none; }
@@ -195,6 +197,7 @@ html.toc-open .burger span::after { transform: translateY(-6px) rotate(-45deg); 
 .hero h1 .pink { color: var(--pink); display: block; }
 .hero__sub { margin-top: 1.6rem; }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+@media (max-width: 420px) { .hero__ctas { gap: .6rem; } .hero__ctas .btn:not(.btn--icon) { padding-inline: 1.2em; } }
 .arch {
   position: relative; overflow: hidden;
   border-radius: 999px 999px var(--radius) var(--radius);
@@ -537,6 +540,7 @@ textarea { min-height: 7rem; resize: vertical; }
         <div class="hero__ctas">
           <a class="btn" href="#zapytanie" data-ev="cta_hero">Zapytaj o termin</a>
           <a class="btn btn--ghost" href="#karta" data-menu-open>MENU</a>
+          <a class="btn btn--ghost btn--icon" href="https://www.instagram.com/bar_gwar/" target="_blank" rel="noopener" aria-label="Gwar na Instagramie" data-ev="instagram_hero"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a>
         </div>
       </div>
       <div class="hero__media">

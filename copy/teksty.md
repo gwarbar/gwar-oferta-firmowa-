@@ -31,6 +31,7 @@ Wigilie firmowe · Integracje · Wynajem na wyłączność · Koktajle robione n
   - Tytuł: **Zróbcie trochę Gwaru**
   - Podtytuł: Firmowy wieczór zbudowany wokół koktajli. Wigilie, integracje i Gwar na wyłączność w barze przy Kładce Bernatka.
   - Przyciski: Zapytaj o termin · MENU
+  - Obok “Menu” stwórz odnosnik do naszego profilu na instagrtamie https://www.instagram.com/bar\_gwar/
   - Naklejka na wideo: Grudzień / terminy schodzą najszybciej (tutaj video zmień na: 3 film.mp4)
 **Liczby pod hero**
 |  |  |
@@ -161,7 +162,7 @@ Ocenę i liczbę opinii trzeba odświeżyć z Profilu Firmy Google przed wysłan
   - Nadtytuł: Zapytanie
   - Tytuł: **Zarezerwujmy wam termin**
   - Wstęp: Podajcie datę i liczbę osób. Odezwiemy się z propozycją.
-  - Kontakt: Telefon +48 453 433 852 · E-mail [**GWAR@GWAR.BAR**](mailto:GWAR@GWAR.BAR) · Adres Mostowa 8, Kraków
+  - Kontakt: Telefon +48 884 374 607 · E-mail [**GWAR@GWAR.BAR**](mailto:GWAR@GWAR.BAR) · Adres Mostowa 8, Kraków
 |  |  |  |
 | :- | :- | :- |
 | Pole | Etykieta | Podpowiedź |
@@ -177,7 +178,7 @@ Ocenę i liczbę opinii trzeba odświeżyć z Profilu Firmy Google przed wysłan
   - Zgoda pod formularzem: Wysyłając zapytanie, zgadzacie się na kontakt w sprawie oferty. 
   - Przycisk: Wyślij zapytanie
   - Błąd: Uzupełnij: \[lista brakujących pól\].
-  - Po wysłaniu: **Zapytanie gotowe** – Wyślij je mailem albo skopiuj i wklej, gdzie wolisz. Szybciej będzie telefonicznie: +48 453 433 852.
+  - Po wysłaniu: **Zapytanie gotowe** – Wyślij je mailem albo skopiuj i wklej, gdzie wolisz. Szybciej będzie telefonicznie: +48 884 374 607.
   - Przyciski po wysłaniu: Otwórz w poczcie · Kopiuj treść (po kliknięciu: Skopiowano)
   - Temat maila: Zapytanie firmowe: \[okazja\], \[liczba\] os.
 **Stopka**
